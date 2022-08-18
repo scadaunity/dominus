@@ -5,3 +5,4 @@
         heroku create
     ## Cria uma chave da aplicação
         heroku config:set APP_KEY=$(php artisan --no-ansi key:generate --show)
+    ## Subir aplicação
