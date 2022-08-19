@@ -20,7 +20,7 @@ class CreateProfessoresTable extends Migration
             $table->string('cpf');
             $table->string('email');
             $table->string('celular');
-            $table->integer('cep');
+            $table->string('cep');
             $table->string('endereco');
             $table->string('complemento')->nullable(true);
             $table->string('bairro');

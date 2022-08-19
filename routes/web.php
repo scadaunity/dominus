@@ -5,6 +5,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\DisciplinaController;
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::get('/', function () {
 
 //Login
 Route::get('login', [LoginController::class, 'index']);
+Route::post('autenticate', [LoginController::class, 'autenticate']);
+//Route::get('login', [AuthController::class, 'index']);
 
 //Alunos
 Route::get('alunos', [AlunosController::class, 'index']);
@@ -42,5 +45,3 @@ Route::post('classes/save', [ClassesController::class, 'store']);
 //Disciplina
 Route::get('disciplinas', [DisciplinaController::class, 'index']);
 Route::post('disciplinas/save', [DisciplinaController::class, 'store']);
-
-

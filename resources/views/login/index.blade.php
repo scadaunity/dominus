@@ -27,14 +27,11 @@
 
             <div class="checkbox mb-3">
                 <label>
-                    Esqueceu sua senha? <a href="#">Clique aqui</a> para recuperá-la.
+                    <a href="#">Recuperar senha</a>
                 </label>
             </div>
             <a href="{{route('professores')}}" class="btn btn-primary btn-sm">Acessar</a>
-            {{-- <form action="{{route('professores')}}" method="get">
-                <button class="btn btn-primary btn-sm" type="submit">Acessar</button>
-                <a href="{{redirect('professores')}}" class="btn btn-primary btn-sm">Acessar</a>
-            </form> --}}
+            
         </form>
     </main>
 </body>
