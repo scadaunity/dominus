@@ -10,7 +10,7 @@ class ProfessoresController extends Controller
 {
     public function index(){
         $professores = Professor::query()->orderBy('nome')->get();
-        return view('professores.index')->with('professores', $professores);;
+        return view('professores.index')->with('professores', $professores);
     }
 
     public function create(){
@@ -19,9 +19,9 @@ class ProfessoresController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $professer = new Professor();
-        
+
         $professer->nome = $request->nome;
         $professer->sobrenome = $request->sobrenome;
         $professer->cpf = $request->cpf;
@@ -36,5 +36,13 @@ class ProfessoresController extends Controller
         $professer->save();
 
         return redirect('professores');
+    }
+
+    public function edit($id){
+        $estados = Estado::query()->orderBy('id')->get();
+        $professor = Professor::findOrFail($id);
+        return view('professores.edit')
+            ->with('estados', $estados)
+            ->with('professor',$professor);
     }
 }

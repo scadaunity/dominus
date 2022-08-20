@@ -12,6 +12,9 @@ class LoginController extends Controller
     }
 
     public function autenticate(Request $request){
-
+        $validated = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
     }
 }

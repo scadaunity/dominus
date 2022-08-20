@@ -37,6 +37,7 @@ Route::post('alunos/save', [AlunosController::class, 'store']);
 Route::get('professores',[ProfessoresController::class, 'index'])->name('professores');
 Route::get('professores/create', [ProfessoresController::class, 'create']);
 Route::post('professores/save', [ProfessoresController::class, 'store']);
+Route::get('professores/edit/{id}', [ProfessoresController::class, 'edit']);
 
 //Classe
 Route::get('classes', [ClassesController::class, 'index']);

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/app.css" rel="stylesheet">
-    <script src="../js/mascaras.js"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/mascaras.js') }}"></script>
     <title>Escola - {{ $title }}</title>
 </head>
 
@@ -14,11 +14,11 @@
 
     <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
-            <img src="../icons/logo.png" alt="Home">
+            <img src="{{ asset('icons/logo.png') }}" alt="Home">
         </a>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="btn btn-outline-primary btn-sm m-3" href="#">Sair</a>
+                <a class="btn btn-outline-primary btn-sm m-3" href="{{ url('/') }}">Sair</a>
             </div>
         </div>
     </header>
