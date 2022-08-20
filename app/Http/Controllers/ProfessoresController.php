@@ -45,4 +45,8 @@ class ProfessoresController extends Controller
             ->with('estados', $estados)
             ->with('professor',$professor);
     }
+
+    public function update(){
+        
+    }
 }

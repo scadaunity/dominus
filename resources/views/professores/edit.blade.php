@@ -68,8 +68,10 @@
                 </select>
             </div>
             <hr class="my-4">
+
             <div class="row col-12 justify-content-end mb-3">
-                <button class="w-25 btn btn-outline-primary" type="submit">Cadastrar</button>
+                <a class="w-25 m-3 btn btn-outline-secondary " href="{{ route('professores')}}">Voltar</a>
+                <button class="w-25 m-3 btn btn-outline-primary" type="submit">Salvar</button>
             </div>
         </div>
     </form>
