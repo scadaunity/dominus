@@ -21,7 +21,7 @@
 }
 </style>
 
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse ">
     <div class="position-sticky pt-3">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Cadastros</span>
@@ -29,25 +29,25 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
                 <a href="/professores" class="navs">
-                    <img src="../icons/professores.png" style="width: 15%" />
+                    <img src="{{ asset('icons/professores.png') }}" style="width: 15%" />
                     Professor
                 </a>
             </li>
             <li>
                 <a href="/alunos" class="navs">
-                    <img src="../icons/alunos.png" style="width: 15%" />
+                    <img src="{{ asset('icons/alunos.png') }}" style="width: 15%" />
                     Aluno
                 </a>
             </li>
             <li>
                 <a href="/classes" class="navs">
-                    <img src="../icons/classe.png" style="width: 15%" />
+                    <img src="{{ asset('icons/classe.png') }}" style="width: 15%" />
                     Classe
                 </a>
             </li>
             <li>
                 <a href="/disciplinas" class="navs">
-                    <img src="../icons/disciplina.png" style="width: 15%" />
+                    <img src="{{ asset('icons/disciplina.png') }}" style="width: 15%" />
                     Disciplina
                 </a>
             </li>
@@ -58,19 +58,19 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
                 <a href="" class="navs disabled btn-sm">
-                    <img src="../icons/notas.png" style="width: 15%" />
+                    <img src="{{ asset('icons/notas.png') }}" style="width: 15%" />
                     Notas
                 </a>
             </li>
             <li>
                 <a href="" class="navs disabled btn-sm">
-                    <img src="../icons/frequencia.png" style="width: 15%" />
+                    <img src="{{ asset('icons/frequencia.png') }}" style="width: 15%" />
                     Frequências
                 </a>
             </li>
             <li>
                 <a href="" class="navs disabled btn-sm">
-                    <img src="../icons/relatórios.png" style="width: 15%" />
+                    <img src="{{ asset('icons/relatorios.png') }}" style="width: 15%" />
                     Relatórios
                 </a>
             </li>
@@ -81,13 +81,13 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
                 <a href="" class="navs disabled btn-sm">
-                    <img src="../icons/cadastro_de_usuarios.png" style="width: 15%" />
+                    <img src="{{ asset('icons/cadastro_de_usuarios.png') }}" style="width: 15%" />
                     Cadastro de Usuário
                 </a>
             </li>
             <li>
                 <a href="" class="navs disabled btn-sm">
-                    <img src="../icons/grupo_de_usuarios.png" style="width: 15%" />
+                    <img src="{{ asset('icons/grupo_de_usuarios.png') }}" style="width: 15%" />
                     Grupos de Usuários
                 </a>
             </li>

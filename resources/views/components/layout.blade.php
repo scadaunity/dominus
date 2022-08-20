@@ -28,8 +28,7 @@
             <x-sidebar />
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
                 <div class="col col-lg-11 mt-5">
-                    <h4 class="text-primary">{{ $title }}</h4>
-                    <hr class="my-4">
+                    <h1 class="text-primary mb-3">{{ $title }}</h1>
                     {{ $slot }}
                 </div>
             </main>
