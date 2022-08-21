@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/mascaras.js') }}"></script>
-    <title>Escola - {{ $title }}</title>
+    <title>Dominus</title>
 </head>
 
 <body>
