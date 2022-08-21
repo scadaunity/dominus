@@ -24,7 +24,7 @@
             <li class="col-4 list-group-item">{{ $prof->nome }}</li>
             <li class="col-4 list-group-item">{{ $prof->email }}</li>
             <li class="col-2 list-group-item">{{ $prof->cidade }} - {{$prof->estdado}}</li>
-            <li class="col-2 list-group-item text-center">
+            <li class="col-2 list-group-item text-center spa">
                 <a href="{{ url('professores/edit\/').$prof->id }}" class="btn btn-success btn-sm">Alterar</a>
                 <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalExcluir"
                     data-id="{{ $prof->id }}"
