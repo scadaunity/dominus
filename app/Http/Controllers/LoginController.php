@@ -11,6 +11,11 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function home(){
+
+        return view('pages.dashboard');
+    }
+
     public function autenticate(Request $request){
 
         $validatedData = $request->validateWithBag('login', [

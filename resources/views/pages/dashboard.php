@@ -1,1 +1,5 @@
-<h1>dashboard</h1>
+<x-layout title="Dashboard">
+    <div class="">
+
+    </div>
+</x-layout>

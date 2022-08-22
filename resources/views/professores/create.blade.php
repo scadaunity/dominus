@@ -1,5 +1,5 @@
 <x-layout title="NOVO PROFESSOR">
-    <form action="save" method="post">
+    <form action="{{ route('professores.store') }}" method="post">
         @csrf
         <div class="row g-3 border">
             <div class="col-sm-6">

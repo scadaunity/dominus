@@ -1,6 +1,7 @@
-<x-layout title="ALTERAR PROFESSOR">
-    <form action="save" method="post">
+<x-layout title="Editar Professor">
+    <form action="{{route('professor.update',['professor'=>$professor])}}" method="post">
         @csrf
+        @method('put')
         <div class="row g-3">
             <input type="hidden" name="id" value="{{$professor->id}}">
             <div class="col-sm-6">
@@ -70,8 +71,8 @@
             <hr class="my-4">
 
             <div class="row col-12 justify-content-end mb-3">
-                <a class="w-25 m-3 btn btn-outline-secondary " href="{{ route('professores')}}">Voltar</a>
-                <button class="w-25 m-3 btn btn-outline-primary" type="submit">Salvar</button>
+                <a class="w-25 m-3 btn btn-outline-secondary " href="{{ route('professor.index')}}">Voltar</a>
+                <button class="w-25 m-3 btn btn-outline-primary disable" type="submit">Salvar</button>
             </div>
         </div>
     </form>

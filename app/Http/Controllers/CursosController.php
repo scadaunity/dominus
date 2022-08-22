@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cursos;
+use App\Models\Curso;
 
 class CursosController extends Controller
 {
@@ -14,7 +14,7 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $cursos = Cursos::query()->orderBy('id')->get();
+        $cursos = Curso::query()->orderBy('id')->get();
 
         return view('cursos.index')
             ->with('cursos', $cursos);
@@ -38,7 +38,7 @@ class CursosController extends Controller
      */
     public function store(Request $request)
     {
-        $curso = new Cursos();
+        $curso = new Curso();
         $curso->codigo = 0;
         $curso->nome = $request->nome;
         $curso->save();

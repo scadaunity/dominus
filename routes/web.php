@@ -26,19 +26,29 @@ Route::get('/', function () {
 
 //Login
 Route::get('login', [LoginController::class, 'index']);
+Route::get('home', [LoginController::class, 'home']);
 Route::post('autenticate', [LoginController::class, 'autenticate']);
 //Route::get('login', [AuthController::class, 'index']);
+
+/*Route::resources([
+    'professores' => ProfessoresController::class,
+]);*/
+Route::resource('professores',ProfessoresController::class)
+    ->names('professor')
+    ->parameters(['professores'=>'professor']);
 
 //Alunos
 Route::get('alunos', [AlunosController::class, 'index']);
 Route::get('alunos/create',[AlunosController::class, 'create']);
 Route::post('alunos/save', [AlunosController::class, 'store']);
 
+/*
 //Professores
 Route::get('professores',[ProfessoresController::class, 'index'])->name('professores');
 Route::get('professores/create', [ProfessoresController::class, 'create']);
 Route::post('professores/save', [ProfessoresController::class, 'store']);
-Route::get('professores/edit/{id}', [ProfessoresController::class, 'edit']);
+Route::post('professores/edit/{id}', [ProfessoresController::class, 'edit']);
+*/
 
 //Classe
 Route::get('classes', [ClassesController::class, 'index']);

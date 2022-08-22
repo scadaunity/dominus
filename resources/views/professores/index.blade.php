@@ -26,7 +26,7 @@
                 <td>{{ $prof->email }}</td>
                 <td>{{ $prof->cidade }} - {{$prof->estdado}}</td>
                 <td>
-                    <a href="{{ url('professores/edit\/').$prof->id }}" class="btn btn-success btn-sm">Alterar</a>
+                    <a href="{{ url('professores\/') .$prof->id .'/editar'}}" class="btn btn-success btn-sm">Alterar</a>
                     <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalExcluir"
                         data-id="{{ $prof->id }}"
                         data-nome="{{ $prof->nome }}"
