@@ -26,9 +26,6 @@ class DisciplinaController extends Controller
         $disciplina->sigla = $request->sigla;
         $disciplina->cor = $request->cor;
         $disciplina->save();
-
-        $var = Disciplina::query()->orderBy('id')->get();
-        dd($var);
         redirect('disciplinas');
     }
 }

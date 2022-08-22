@@ -6,35 +6,39 @@
                 <button class="btn btn-outline-primary" type="submit">Novo Professor</button>
             </form>
         </div>
-        <div class="p-2 bd-highlight">
-            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Busca Professor">
-        </div>
-        <div class="p-2 bd-highlight">
-            <button class="btn btn-outline-primary" type="submit">Buscar</button>
-        </div>
     </div>
-    <ul class="mt-3 list-group list-group-horizontal text-center">
-        <li class="col-4 list-group-item list-group-item-secondary"><b>Nome</b></li>
-        <li class="col-4 list-group-item list-group-item-secondary"><b>E-mail</b></li>
-        <li class="col-2 list-group-item list-group-item-secondary"><b>Cidade e Estado</b></li>
-        <li class="col-2 list-group-item list-group-item-secondary"><b>Ação</b></li>
-    </ul>
-    @foreach ($professores as $prof)
-        <ul class="list-group list-group-horizontal-sm">
-            <li class="col-4 list-group-item">{{ $prof->nome }}</li>
-            <li class="col-4 list-group-item">{{ $prof->email }}</li>
-            <li class="col-2 list-group-item">{{ $prof->cidade }} - {{$prof->estdado}}</li>
-            <li class="col-2 list-group-item text-center spa">
-                <a href="{{ url('professores/edit\/').$prof->id }}" class="btn btn-success btn-sm">Alterar</a>
-                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalExcluir"
-                    data-id="{{ $prof->id }}"
-                    data-nome="{{ $prof->nome }}"
-                    data-rota="{{ url('professores/delete') }}">
-                    Excluir
-                </a>
-            </li>
-        </ul>
-    @endforeach
+
+
+
+    <table id="tableProfessores" class="display table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Cidade e Estado</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($professores as $prof)
+            <tr>
+                <td>{{ $prof->nome }}</td>
+                <td>{{ $prof->email }}</td>
+                <td>{{ $prof->cidade }} - {{$prof->estdado}}</td>
+                <td>
+                    <a href="{{ url('professores/edit\/').$prof->id }}" class="btn btn-success btn-sm">Alterar</a>
+                    <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalExcluir"
+                        data-id="{{ $prof->id }}"
+                        data-nome="{{ $prof->nome }}"
+                        data-rota="{{ url('professores/delete') }}">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 
     <!-- Modal excluir professor-->
     <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,6 +61,9 @@
     </div>
 
     <script type="text/javascript">
+
+
+    //Modal excluir
     let modalExcluir = document.getElementById('modalExcluir')
         modalExcluir.addEventListener('show.bs.modal', function (event) {
         // Button that triggered the modal

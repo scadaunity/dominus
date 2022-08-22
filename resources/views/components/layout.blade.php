@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/mascaras.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <title>Dominus</title>
 </head>
 
@@ -37,6 +39,24 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript">
+    //DataTable
+    $(document).ready(function () {
+        $('table.display').DataTable({
+            paging: true,   //Exibir paginação
+            ordering: true, // Permite ordenar
+            info: false, // exibe informação no footer
+            stateSave: true,
+            order: [[0, 'asc']], // ordenar (desc ou asc)
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json',
+            },
+        });
+    });
+    </script>
 </body>
 
 </html>
