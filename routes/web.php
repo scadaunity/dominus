@@ -6,6 +6,7 @@ use App\Http\Controllers\DisciplinaController;
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CursosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +47,7 @@ Route::post('classes/save', [ClassesController::class, 'store']);
 //Disciplina
 Route::get('disciplinas', [DisciplinaController::class, 'index']);
 Route::post('disciplinas/save', [DisciplinaController::class, 'store']);
+
+//Cursos
+Route::get('cursos', [CursosController::class, 'index']);
+Route::post('cursos/save', [CursosController::class, 'store']);

@@ -8,13 +8,21 @@ class LoginController extends Controller
 {
     public function index(){
 
-        return view('login.login');
+        return view('auth.login');
     }
 
     public function autenticate(Request $request){
-        $validated = $request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
+
+        $validatedData = $request->validateWithBag('login', [
+            'email' => ['required'],
+            'password' => ['required'],
         ]);
+
+        if ($request->email == 'dominus' & $request->password == 'admin') {
+            return redirect('professores');
+        } else {
+            return $this->index();
+        }
+
     }
 }
