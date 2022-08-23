@@ -88,6 +88,6 @@ class CursosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

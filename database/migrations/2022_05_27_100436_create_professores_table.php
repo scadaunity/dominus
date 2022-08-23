@@ -16,7 +16,7 @@ class CreateProfessoresTable extends Migration
         Schema::create('professores', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('sobrenome');
+            $table->string('numero');
             $table->string('cpf');
             $table->string('email');
             $table->string('celular');
@@ -25,7 +25,7 @@ class CreateProfessoresTable extends Migration
             $table->string('complemento')->nullable(true);
             $table->string('bairro');
             $table->string('cidade');
-            $table->string('estdado');
+            $table->string('estado');
             $table->timestamps();
         });
     }

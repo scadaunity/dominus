@@ -41,16 +41,16 @@ class ProfessoresController extends Controller
         $professor = new Professor();
 
         $professor->nome = $request->nome;
-        $professor->sobrenome = $request->sobrenome;
         $professor->cpf = $request->cpf;
         $professor->email = $request->email;
         $professor->celular = $request->celular;
         $professor->cep = $request->cep;
         $professor->endereco = $request->endereco;
+        $professor->numero = $request->numero;
         $professor->complemento = $request->complemento;
         $professor->bairro = $request->bairro;
         $professor->cidade = $request->cidade;
-        $professor->estdado = $request->estado;
+        $professor->estado = $request->estado;
         $professor->save();
 
         return redirect('professores');
@@ -94,16 +94,16 @@ class ProfessoresController extends Controller
     public function update(Request $request, Professor $professor)
     {
         $professor->nome = $request->nome;
-        $professor->sobrenome = $request->sobrenome;
         $professor->cpf = $request->cpf;
         $professor->email = $request->email;
         $professor->celular = $request->celular;
         $professor->cep = $request->cep;
         $professor->endereco = $request->endereco;
+        $professor->numero = $request->numero;
         $professor->complemento = $request->complemento;
         $professor->bairro = $request->bairro;
         $professor->cidade = $request->cidade;
-        $professor->estdado = $request->estado;
+        $professor->estado = $request->estado;
         $professor->save();
 
         return redirect('professores');
@@ -115,8 +115,9 @@ class ProfessoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Professor $professor)
     {
-        //
+        $professor->delete();
+        return redirect('professores');
     }
 }

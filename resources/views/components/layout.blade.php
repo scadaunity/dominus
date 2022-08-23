@@ -17,7 +17,7 @@
 
     <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
-            <img src="{{ asset('icons/logo.png') }}" alt="Home">
+            <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">
         </a>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
