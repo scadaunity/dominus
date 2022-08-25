@@ -30,17 +30,16 @@ Route::get('home', [LoginController::class, 'home']);
 Route::post('autenticate', [LoginController::class, 'autenticate']);
 //Route::get('login', [AuthController::class, 'index']);
 
-/*Route::resources([
-    'professores' => ProfessoresController::class,
-]);*/
-Route::resource('professores',ProfessoresController::class)
-    ->names('professor')
-    ->parameters(['professores'=>'professor']);
+//Professores
+Route::resource('professores',ProfessoresController::class)->names('professor')->parameters(['professores'=>'professor']);
+
+//Professores
+Route::resource('alunos',AlunosController::class)->names('aluno')->parameters(['alunos'=>'aluno']);
 
 //Alunos
-Route::get('alunos', [AlunosController::class, 'index']);
-Route::get('alunos/create',[AlunosController::class, 'create']);
-Route::post('alunos/save', [AlunosController::class, 'store']);
+//Route::get('alunos', [AlunosController::class, 'index']);
+//Route::get('alunos/create',[AlunosController::class, 'create']);
+//Route::post('alunos/save', [AlunosController::class, 'store']);
 
 /*
 //Professores

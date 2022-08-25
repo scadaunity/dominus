@@ -66,8 +66,6 @@
 
     <script type="text/javascript">
 
-
-
         $( ".btn-excluir" ).on( "click", function() {
 
             let modal = document.getElementById('modalExcluir')
@@ -82,11 +80,6 @@
             $('#modalExcluir').modal('show');
             console.log( $( this ).data('rota') );
         });
-
-
-
-
-
 
     </script>
 
