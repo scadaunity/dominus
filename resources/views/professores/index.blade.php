@@ -8,7 +8,6 @@
     <table id="tableProfessores" class="display table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Cidade e Estado</th>
@@ -18,7 +17,6 @@
         <tbody>
             @foreach ($professores as $prof)
             <tr>
-                <td>{{ $prof->id }}</td>
                 <td>{{ $prof->nome }}</td>
                 <td>{{ $prof->email }}</td>
                 <td>{{ $prof->cidade }} - {{$prof->estado}}</td>

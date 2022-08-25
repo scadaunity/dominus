@@ -18,7 +18,7 @@
     </ul>
     @foreach ($cursos as $curso)
         <ul class="list-group list-group-horizontal-sm">
-            <li class="col-6 list-group-item">{{ $curso->codigo }}</li>
+            <li class="col-6 list-group-item">{{ $curso->id }}</li>
             <li class="col-6 list-group-item">{{ $curso->nome }}</li>
         </ul>
     @endforeach
