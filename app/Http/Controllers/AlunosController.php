@@ -50,6 +50,7 @@ class AlunosController extends Controller
         $aluno->telefone = $request->telefone;
         $aluno->email = $request->email;
         $aluno->endereco = $request->endereco;
+        $aluno->numero = $request->numero;
         $aluno->complemento = $request->complemento;
         $aluno->bairro = $request->bairro;
         $aluno->cep = $request->cep;
