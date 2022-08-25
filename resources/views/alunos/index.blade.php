@@ -10,6 +10,7 @@
                 <tr>
                     <th>Matricula</th>
                     <th>Nome</th>
+                    <th>Turma</th>
                     <th>Email</th>
                     <th>Ação</th>
                 </tr>
@@ -19,6 +20,7 @@
                 <tr>
                     <td>{{ $aluno->matricula }}</td>
                     <td>{{ $aluno->nome }}</td>
+                    <td></td>
                     <td>{{ $aluno->email }}</td>
                     <td>
                         <a href="{{ url('alunos\/') .$aluno->id .'/editar'}}" class="btn btn-success btn-sm">Alterar</a>

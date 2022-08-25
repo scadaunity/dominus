@@ -36,6 +36,9 @@ Route::resource('professores',ProfessoresController::class)->names('professor')-
 //Professores
 Route::resource('alunos',AlunosController::class)->names('aluno')->parameters(['alunos'=>'aluno']);
 
+//Professores
+Route::resource('cursos',CursosController::class)->names('curso')->parameters(['cursos'=>'curso']);
+
 //Alunos
 //Route::get('alunos', [AlunosController::class, 'index']);
 //Route::get('alunos/create',[AlunosController::class, 'create']);
@@ -58,5 +61,5 @@ Route::get('disciplinas', [DisciplinaController::class, 'index']);
 Route::post('disciplinas/save', [DisciplinaController::class, 'store']);
 
 //Cursos
-Route::get('cursos', [CursosController::class, 'index']);
-Route::post('cursos/save', [CursosController::class, 'store']);
+//Route::get('cursos', [CursosController::class, 'index']);
+//Route::post('cursos/save', [CursosController::class, 'store']);

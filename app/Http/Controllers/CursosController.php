@@ -86,8 +86,9 @@ class CursosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Curso $curso)
     {
-        
+        $curso->delete();
+        return redirect('cursos');
     }
 }
