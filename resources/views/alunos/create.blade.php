@@ -23,7 +23,7 @@
             <div class="col-sm-2">
                 <label class="form-label">*Data de Nascimento</label>
                 <input type="text" class="form-control form-control-sm" id="nascimento" name="dataNascimento" placeholder="DD/MM/AAAA"
-                    onblur="mascaraData(this)" required="">
+                    required="">
             </div>
 
             <div class="col-sm-4">
@@ -42,7 +42,7 @@
 
             <div class="col-3">
                 <label class="form-label">*Celular</label>
-                <input type="text" onblur="mascaraTelefone(this)" class="form-control form-control-sm" id="telefone" name="telefone"
+                <input type="text" class="form-control form-control-sm" id="telefone" name="telefone"
                     placeholder="(00) 00000-0000" required="">
             </div>
 
@@ -68,7 +68,7 @@
             <div class="col-sm-2">
                 <label class="form-label">Data de expedição</label>
                 <input type="text" class="form-control form-control-sm" id="expedicaoRg" name="dataExpedicao" placeholder="DD/MM/AAAA"
-                    onblur="mascaraData(this)" >
+                    >
             </div>
 
             <div class="col-5">
@@ -98,7 +98,7 @@
 
             <div class="col-sm-2">
                 <label class="form-label">CEP</label>
-                <input type="text" onblur="mascaraCep(this)" class="form-control form-control-sm" id="cep" placeholder="00000-000"
+                <input type="text" class="form-control form-control-sm" id="cep" placeholder="00000-000"
                     name="cep" required="">
             </div>
 
