@@ -28,7 +28,12 @@
                 <td>{{ $curso->id }}</td>
                 <td>{{ $curso->nome }}</td>
                 <td>
-                    <a href="{{ url('cursos\/') .$curso->id .'/editar'}}" class="btn btn-success btn-sm">Alterar</a>
+                    <a href="#" class="btn btn-success btn-sm btn-editar"
+                        data-curso={{$curso}}
+                        data-nome={{$curso->nome}}
+                        data-rota="{{ route('curso.update',['curso'=>$curso]) }}">
+                        Alterar
+                    </a>
                     <a href="#" class="btn btn-danger btn-sm btn-excluir"
                         data-professor = {{$curso}}
                         data-route = "{{ route('curso.destroy',['curso'=>$curso]) }}"
@@ -68,21 +73,54 @@
       </div>
     </div>
 
+    <!-- Modal editar-->
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Curso</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form class="needs-validation" action="" method="post" id="formEditCurso">
+          <div class="modal-body">
+                  @csrf
+                  @method('put')
+                  <div class="row g-3">
+                      <div class="col-sm-12">
+                          <label class="form-label">Nome do Curso</label>
+                          <input type="text" class="form-control" name="nome" id="editarNome"required>
+                      </div>
+                  </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                <button class="btn btn btn-danger" type="submit">Salvar</button>
+
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script type="text/javascript">
 
         $( ".btn-excluir" ).on( "click", function() {
-
             let modal = document.getElementById('modalExcluir')
             let modalName = modal.querySelector('.modal-body h3')
             let modalAction = modal.querySelector('.modal-body h3')
             let form = document.getElementById('formDeleteUser')
-
             form.action = $(this).data('rota')
-
             modalName.textContent = $(this).data('nome')
-
             $('#modalExcluir').modal('show');
-            console.log( $( this ).data('rota') );
+        });
+
+        $( ".btn-editar" ).on( "click", function() {
+            let form = document.getElementById('formEditCurso')
+            let txtNome = document.getElementById('editarNome')
+            txtNome.value = $(this).data('nome')
+            form.action = $(this).data('rota')
+            $('#modalEditar').modal('show');
         });
 
     </script>

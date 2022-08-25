@@ -36,9 +36,8 @@ class CursosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Curso $curso)
     {
-        $curso = new Curso();
         $curso->codigo = 0;
         $curso->nome = $request->nome;
         $curso->save();
@@ -75,9 +74,12 @@ class CursosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Curso $curso)
     {
-        //
+        $curso->nome = $request->nome;
+        $curso->save();
+
+        return redirect('cursos');
     }
 
     /**

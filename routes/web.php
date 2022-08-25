@@ -39,19 +39,6 @@ Route::resource('alunos',AlunosController::class)->names('aluno')->parameters(['
 //Professores
 Route::resource('cursos',CursosController::class)->names('curso')->parameters(['cursos'=>'curso']);
 
-//Alunos
-//Route::get('alunos', [AlunosController::class, 'index']);
-//Route::get('alunos/create',[AlunosController::class, 'create']);
-//Route::post('alunos/save', [AlunosController::class, 'store']);
-
-/*
-//Professores
-Route::get('professores',[ProfessoresController::class, 'index'])->name('professores');
-Route::get('professores/create', [ProfessoresController::class, 'create']);
-Route::post('professores/save', [ProfessoresController::class, 'store']);
-Route::post('professores/edit/{id}', [ProfessoresController::class, 'edit']);
-*/
-
 //Classe
 Route::get('classes', [ClassesController::class, 'index']);
 Route::post('classes/save', [ClassesController::class, 'store']);
