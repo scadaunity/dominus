@@ -36,10 +36,11 @@ Route::resource('professores',ProfessoresController::class)->names('professor')-
 Route::resource('alunos',AlunosController::class)->names('aluno')->parameters(['alunos'=>'aluno']);
 Route::resource('cursos',CursosController::class)->names('curso')->parameters(['cursos'=>'curso']);
 Route::resource('modulos',ModulosController::class)->names('modulo')->parameters(['modulos'=>'modulo']);
+Route::resource('classes',ClassesController::class)->names('classe')->parameters(['classes'=>'classe']);
 
 //Classe
-Route::get('classes', [ClassesController::class, 'index']);
-Route::post('classes/save', [ClassesController::class, 'store']);
+//Route::get('classes', [ClassesController::class, 'index']);
+//Route::post('classes/save', [ClassesController::class, 'store']);
 
 //Disciplina
 Route::get('disciplinas', [DisciplinaController::class, 'index']);

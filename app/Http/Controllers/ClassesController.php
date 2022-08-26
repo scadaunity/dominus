@@ -23,10 +23,9 @@ class ClassesController extends Controller
             ->with('classes', $classes);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Classe $classe)
     {
 
-        $classe = new Classe();
         $classe->nome = $request->nome;
         $classe->serie = $request->serie;
         $classe->save();

@@ -8,13 +8,13 @@
             </div>
 
             <div class="col-3 align-self-end">
-                <button class="btn btn-outline-primary" type="submit">Cadastrar Curso</button>
+                <button class="btn btn-outline-primary btn-store" type="submit">Cadastrar Curso</button>
             </div>
         </div>
     </form>
     <br>
 
-    <table id="tableProfessores" class="display table table-striped" style="width:100%">
+    <table class="display table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Codigo</th>
@@ -29,15 +29,11 @@
                 <td>{{ $curso->nome }}</td>
                 <td>
                     <a href="#" class="btn btn-success btn-sm btn-editar"
-                        data-curso={{$curso}}
-                        data-nome={{$curso->nome}}
+                        data-nome="{{$curso->nome}}"
                         data-rota="{{ route('curso.update',['curso'=>$curso]) }}">
                         Alterar
                     </a>
                     <a href="#" class="btn btn-danger btn-sm btn-excluir"
-                        data-professor = {{$curso}}
-                        data-route = "{{ route('curso.destroy',['curso'=>$curso]) }}"
-                        data-id="{{ $curso->id }}"
                         data-nome="{{ $curso->nome }}"
                         data-rota="{{ route('curso.destroy',['curso'=>$curso]) }}">
                         Excluir
@@ -81,7 +77,7 @@
             <h5 class="modal-title">Editar Curso</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form class="needs-validation" action="" method="post" id="formEditCurso">
+          <form class="needs-validation" action="" method="post" id="formEditar">
           <div class="modal-body">
                   @csrf
                   @method('put')
@@ -94,9 +90,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-
-                <button class="btn btn btn-danger" type="submit">Salvar</button>
-
+            <button class="btn btn btn-danger" type="submit">Salvar</button>
           </div>
           </form>
         </div>
@@ -113,10 +107,12 @@
             form.action = $(this).data('rota')
             modalName.textContent = $(this).data('nome')
             $('#modalExcluir').modal('show');
+            console.log()
         });
 
-        $( ".btn-editar" ).on( "click", function() {
-            let form = document.getElementById('formEditCurso')
+        $( ".btn-editar" ).on( "click", function(e) {
+            console.log(e.target)
+            let form = document.getElementById('formEditar')
             let txtNome = document.getElementById('editarNome')
             txtNome.value = $(this).data('nome')
             form.action = $(this).data('rota')

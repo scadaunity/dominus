@@ -49,6 +49,7 @@
             paging: true,   //Exibir paginação
             ordering: true, // Permite ordenar
             info: false, // exibe informação no footer
+            lengthChange: false, // exibe o botão a quantidade de registros por pagina
             stateSave: true,
             order: [[0, 'asc']], // ordenar (desc ou asc)
             language: {
