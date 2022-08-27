@@ -17,6 +17,8 @@ class ModulosController extends Controller
     {
         $modulos = Modulo::query()->orderBy('nome')->get();
         $cursos = Curso::query()->orderBy('nome')->get();
+
+
         return view('modulos.index')
             ->with('cursos', $cursos)
             ->with('modulos', $modulos);
@@ -76,9 +78,13 @@ class ModulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Modulo $modulo)
     {
-        //
+        $modulo->nome = $request->nome;
+        $modulo->curso_id = $request->curso_id;
+        $modulo->save();
+
+        return redirect('modulos');
     }
 
     /**

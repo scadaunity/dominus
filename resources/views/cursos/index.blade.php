@@ -44,7 +44,7 @@
         </tbody>
     </table>
 
-    <!-- Modal excluir professor-->
+    <!-- Modal excluir -->
     <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <!-- Modal editar-->
+    <!-- Modal editar -->
     <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -78,7 +78,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form class="needs-validation" action="" method="post" id="formEditar">
-          <div class="modal-body">
+              <div class="modal-body">
                   @csrf
                   @method('put')
                   <div class="row g-3">
@@ -87,11 +87,11 @@
                           <input type="text" class="form-control" name="nome" id="editarNome"required>
                       </div>
                   </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button class="btn btn btn-danger" type="submit">Salvar</button>
-          </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn btn-danger" type="submit">Salvar</button>
+              </div>
           </form>
         </div>
       </div>
@@ -99,19 +99,18 @@
 
     <script type="text/javascript">
 
+        //Excluir registro
         $( ".btn-excluir" ).on( "click", function() {
             let modal = document.getElementById('modalExcluir')
             let modalName = modal.querySelector('.modal-body h3')
-            let modalAction = modal.querySelector('.modal-body h3')
             let form = document.getElementById('formDeleteUser')
             form.action = $(this).data('rota')
             modalName.textContent = $(this).data('nome')
             $('#modalExcluir').modal('show');
-            console.log()
         });
 
-        $( ".btn-editar" ).on( "click", function(e) {
-            console.log(e.target)
+        //Editar registro
+        $( ".btn-editar" ).on( "click", function() {
             let form = document.getElementById('formEditar')
             let txtNome = document.getElementById('editarNome')
             txtNome.value = $(this).data('nome')
