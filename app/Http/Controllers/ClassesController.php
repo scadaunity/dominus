@@ -36,9 +36,22 @@ class ClassesController extends Controller
     {
 
         $classe->nome = $request->nome;
-        $classe->serie = $request->serie;
+        $classe->curso = $request->curso_id;
+        $classe->modulo = $request->modulo_id;
         $classe->save();
 
+        return redirect('classes');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Classe $classe)
+    {
+        $classe->delete();
         return redirect('classes');
     }
 }

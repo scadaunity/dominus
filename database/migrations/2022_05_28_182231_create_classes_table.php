@@ -16,7 +16,8 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('serie');
+            $table->integer('curso');
+            $table->integer('modulo');
             $table->timestamps();
         });
     }

@@ -37,26 +37,44 @@
     <table id="tableProfessores" class="display table table-striped" style="width:100%">
         <thead>
             <tr>
+                <th>Curso</th>
+                <th>Modulo</th>
                 <th>Classe</th>
-                <th>Serie</th>
                 <th>Ação</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($classes as $classe)
             <tr>
+
+                @foreach ($cursos as $curso)
+                    @if($classe->curso == $curso->id)
+                        <td>{{ $curso->nome }}</td>
+                    @endif
+
+                @endforeach
+
+                @foreach ($modulos as $modulo)
+                    @if($classe->modulo == $modulo->id)
+                        <td>{{ $modulo->nome }}</td>
+                    @endif
+                @endforeach
+
                 <td>{{ $classe->nome }}</td>
-                <td>{{ $classe->serie }}</td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm btn-adicionar-aluno"
-                        data-curso={{$classe}}
-                        data-nome={{$classe->nome}}
+                    <a href="#" class="btn btn-primary btn-sm btn-professores"
+                        >
+                        Professores
+                    </a>
+                    <a href="#" class="btn btn-info btn-sm btn-adicionar-aluno"
+                        data-curso="{{$classe}}"
+                        data-nome="{{$classe->nome}}"
                         data-rota="{{ route('classe.update',['classe'=>$classe]) }}">
                         Adicionar alunos
                     </a>
                     <a href="#" class="btn btn-success btn-sm btn-editar"
-                        data-curso={{$classe}}
-                        data-nome={{$classe->nome}}
+                        data-curso="{{$classe}}"
+                        data-nome="{{$classe->nome}}"
                         data-rota="{{ route('classe.update',['classe'=>$classe]) }}">
                         Alterar
                     </a>
@@ -79,11 +97,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Excluir modulo</h5>
+            <h5 class="modal-title">Excluir classe</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p class="text-center">Confirma a exclusão do modulo?</p>
+            <p class="text-center">Confirma a exclusão da classe?</p>
             <h3 class="text-center"></h3>
             <p class="text-muted text-center">Não será possivel recuperar o registro.</p>
           </div>
@@ -114,6 +132,10 @@
                   @method('put')
                   <div class="row g-3">
                       <div class="col-sm-12">
+                          <label class="form-label">Nome da classe</label>
+                          <input type="text" class="form-control" name="nome" id="editarNome"required>
+                      </div>
+                      <div class="col-sm-12">
                           <label class="form-label">*Curso</label>
                           <select class="form-select" id="editarCurso_id" name="curso_id">
                               <option value="0">Selecione</option>
@@ -122,10 +144,7 @@
                               @endforeach
                           </select>
                       </div>
-                      <div class="col-sm-12">
-                          <label class="form-label">Nome do Curso</label>
-                          <input type="text" class="form-control" name="nome" id="editarNome"required>
-                      </div>
+
 
                   </div>
               </div>
@@ -153,17 +172,13 @@
                   @method('put')
                   <div class="row g-3">
                       <div class="col-sm-12">
-                          <label class="form-label">*Curso</label>
+                          <label class="form-label">*Alunos</label>
                           <select class="form-select" id="editarCurso_id" name="curso_id">
                               <option value="0">Selecione</option>
-                              @foreach ($cursos as $curso)
-                                  <option value="{{$curso->id}}">{{$curso->nome}}</option>
+                              @foreach ($alunos as $aluno)
+                                  <option value="{{$aluno->id}}">{{$aluno->nome}}</option>
                               @endforeach
                           </select>
-                      </div>
-                      <div class="col-sm-12">
-                          <label class="form-label">Nome do Curso</label>
-                          <input type="text" class="form-control" name="nome" id="editarNome"required>
                       </div>
 
                   </div>
