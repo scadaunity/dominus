@@ -38,7 +38,6 @@
                     @if($curso->id == $modulo->curso_id)
                         <td>{{ $curso->nome }}</td>
                     @endif
-
                 @endforeach
                 <td>{{ $modulo->nome }}</td>
                 <td>

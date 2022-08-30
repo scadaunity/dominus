@@ -11,7 +11,7 @@ class DisciplinaController extends Controller
     {
         $disciplinas = Disciplina::query()->orderBy('id')->get();
 
-        $cores = array('Selecione', 'vermelho', 'verde', 'azul', 'rosa', 'amarelo', 'vinho');
+        $cores = array('vermelho', 'verde', 'azul', 'rosa', 'amarelo', 'vinho');
         return view('disciplinas.index')
             ->with('cores', $cores)
             ->with('disciplinas', $disciplinas);
@@ -26,6 +26,6 @@ class DisciplinaController extends Controller
         $disciplina->sigla = $request->sigla;
         $disciplina->cor = $request->cor;
         $disciplina->save();
-        redirect('disciplinas');
+        return redirect('disciplinas');
     }
 }

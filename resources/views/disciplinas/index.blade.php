@@ -5,24 +5,25 @@
 
             <div class="col-sm-4">
                 <label class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="nome" name="nome">
+                <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
 
             <div class="col-sm-2">
                 <label class="form-label">Sigla</label>
-                <input type="text" class="form-control" id="sigla" name="sigla">
+                <input type="text" class="form-control" id="sigla" name="sigla" required>
             </div>
 
             <div class="col-sm-3">
                 <label class="form-label">Cor</label>
-                <select class="form-select" id="cor" name="cor">
+                <select class="form-select" id="cor" name="cor" required>
                     @foreach ($cores as $cor)
                         <option value="{{$cor}}">{{$cor}}</option>
                     @endforeach
                 </select>
             </div>
+
             <div class="col-3 align-self-end">
-                <button class="btn btn-outline-primary" type="submit">Cadastrar Classe</button>
+                <button class="btn btn-outline-primary" type="submit">Cadastrar Disciplina</button>
             </div>
         </div>
     </form>
