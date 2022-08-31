@@ -73,8 +73,9 @@
                         Adicionar alunos
                     </a>
                     <a href="#" class="btn btn-success btn-sm btn-editar"
-                        data-curso="{{$classe}}"
                         data-nome="{{$classe->nome}}"
+                        data-curso_id="{{$classe->curso}}"
+                        data-modulo_id="{{$classe->modulo}}"
                         data-rota="{{ route('classe.update',['classe'=>$classe]) }}">
                         Alterar
                     </a>
@@ -137,15 +138,22 @@
                       </div>
                       <div class="col-sm-12">
                           <label class="form-label">*Curso</label>
-                          <select class="form-select" id="editarCurso_id" name="curso_id">
+                          <select class="form-select" id="editarCursoId" name="curso_id">
                               <option value="0">Selecione</option>
                               @foreach ($cursos as $curso)
                                   <option value="{{$curso->id}}">{{$curso->nome}}</option>
                               @endforeach
                           </select>
                       </div>
-
-
+                      <div class="col-sm-12">
+                          <label class="form-label">*Modulo</label>
+                          <select class="form-select" id="editarModuloId" name="modulo_id">
+                              <option value="0">Selecione...</option>
+                              @foreach ($modulos as $modulo)
+                                  <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
+                              @endforeach
+                          </select>
+                      </div>
                   </div>
               </div>
               <div class="modal-footer">
@@ -209,7 +217,12 @@
         $( ".btn-editar" ).on( "click", function() {
             let form = document.getElementById('formEditar')
             let txtNome = document.getElementById('editarNome')
+            let txtCurso = document.getElementById('editarCursoId')
+            let txtModulo = document.getElementById('editarNomeId')
             txtNome.value = $(this).data('nome')
+            $('#editarCursoId').val($(this).data('curso_id'))
+            $('#editarModuloId').val($(this).data('modulo_id'))
+
             form.action = $(this).data('rota')
             $('#modalEditar').modal('show');
         });
