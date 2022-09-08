@@ -19,7 +19,7 @@
             <div class="col-sm-2">
                 <label class="form-label">*Carga Horaria</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="cargaHoraria" name="carga_horaria" required disabled>
+                  <input type="number" class="form-control" id="cargaHoraria" name="carga_horaria" required disabled>
                   <span class="input-group-text" id="basic-addon2">Horas</span>
                 </div>
 
