@@ -1,9 +1,9 @@
-<x-layout title="Classes">
+<x-layout title="Turmas">
     <form class="needs-validation" action="{{route('classe.store')}}" method="post">
         @csrf
         <div class="row g-3">
             <div class="col-sm-3">
-                <label class="form-label">*Nome da Classe</label>
+                <label class="form-label">*Nome</label>
                 <input type="text" class="form-control" name="nome">
             </div>
 

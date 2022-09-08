@@ -11,9 +11,8 @@ class DisciplinaController extends Controller
     {
         $disciplinas = Disciplina::query()->orderBy('id')->get();
 
-        $cores = array('vermelho', 'verde', 'azul', 'rosa', 'amarelo', 'vinho');
+
         return view('disciplinas.index')
-            ->with('cores', $cores)
             ->with('disciplinas', $disciplinas);
     }
 
@@ -24,8 +23,36 @@ class DisciplinaController extends Controller
 
         $disciplina->nome = $request->nome;
         $disciplina->sigla = $request->sigla;
-        $disciplina->cor = $request->cor;
+        $disciplina->carga_horaria = $request->carga_horaria;
         $disciplina->save();
+        return redirect('disciplinas');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Disciplina $disciplina)
+    {
+        $disciplina->nome = $request->nome;
+        $disciplina->sigla = $request->sigla;
+        $disciplina->carga_horaria = $request->carga_horaria;
+        $disciplina->save();
+        return redirect('disciplinas');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Disciplina $disciplina)
+    {
+        $disciplina->delete();
         return redirect('disciplinas');
     }
 }

@@ -37,6 +37,7 @@ Route::resource('alunos',AlunosController::class)->names('aluno')->parameters(['
 Route::resource('cursos',CursosController::class)->names('curso')->parameters(['cursos'=>'curso']);
 Route::resource('modulos',ModulosController::class)->names('modulo')->parameters(['modulos'=>'modulo']);
 Route::resource('classes',ClassesController::class)->names('classe')->parameters(['classes'=>'classe']);
+Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')->parameters(['disciplinas'=>'disciplina']);
 
 //Classe
 //Route::get('classes', [ClassesController::class, 'index']);

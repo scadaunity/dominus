@@ -17,7 +17,7 @@ class CreateDisciplinasTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('sigla');
-            $table->string('cor');
+            $table->integer('carga_horaria');
             $table->timestamps();
         });
     }

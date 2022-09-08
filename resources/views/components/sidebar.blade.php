@@ -42,7 +42,7 @@
             <li>
                 <a href="/classes" class="navs">
                     <img src="{{ asset('icons/classe.png') }}" style="width: 15%" />
-                    Classe
+                    Turma
                 </a>
             </li>
             <li>
@@ -54,13 +54,13 @@
             <li>
                 <a href="/cursos" class="navs">
                     <img src="{{ asset('icons/cursos.png') }}" style="width: 15%" />
-                    Cursos
+                    Curso
                 </a>
             </li>
             <li>
                 <a href="/modulos" class="navs">
                     <img src="{{ asset('icons/cursos.png') }}" style="width: 15%" />
-                    Módulos
+                    Módulo
                 </a>
             </li>
         </ul>

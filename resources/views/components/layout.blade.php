@@ -14,16 +14,34 @@
 </head>
 
 <body>
-
-    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
-            <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">
-        </a>
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="btn btn-outline-primary btn-sm m-3" href="{{ url('/') }}">Sair</a>
+    <header class="navbar navbar-light sticky-top bg-light shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
+                <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Cadastros
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Professor</a></li>
+                    <li><a class="dropdown-item" href="#">Aluno</a></li>
+                    <li><a class="dropdown-item" href="#">Turma</a></li>
+                    <li><a class="dropdown-item" href="#">Disciplina</a></li>
+                    <li><a class="dropdown-item" href="#">Cursos</a></li>
+                    <li><a class="dropdown-item" href="#">Modulos</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url('/') }}">Sair</a>
+                </li>
+              </ul>
             </div>
-        </div>
     </header>
 
     <div class="container-fluid">
