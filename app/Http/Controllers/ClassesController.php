@@ -49,9 +49,15 @@ class ClassesController extends Controller
      */
     public function update(Request $request, Classe $classe)
     {
+        // Dados padrão da turma
         $classe->nome = $request->nome;
         $classe->curso = $request->curso_id;
         $classe->modulo = $request->modulo_id;
+
+        // Opcionais da Turma
+
+
+
         $classe->save();
 
         return redirect('classes');

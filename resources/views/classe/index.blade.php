@@ -67,9 +67,12 @@
                         Professores
                     </a>
                     <a href="#" class="btn btn-info btn-sm btn-adicionar-aluno"
-                        data-curso="{{$classe}}"
-                        data-nome="{{$classe->nome}}"
-                        data-alunos="{{$classe->alunos}}"
+
+                        data-Nome           ="{{ $classe->nome }}"
+                        data-curso          ="{{ $classe->curso }}"
+                        data-modulo         ="{{ $classe->modulo }}"
+                        data-alunos         ="{{ $classe->alunos }}"
+                        data-professores    ="{{ $classe->professores }}"
                         data-rota="{{ route('classe.update',['classe'=>$classe]) }}">
                         Adicionar alunos
                     </a>
@@ -125,7 +128,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Editar Classe</h5>
+            <h5 class="modal-title">Editar Classe</uh5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form class="needs-validation" action="" method="post" id="formEditar">
@@ -175,7 +178,7 @@
             <h5 class="modal-title">Adicionar aluno</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form class="needs-validation" action="" method="post" id="formEditar">
+          <form class="needs-validation" method="post" id="formAddAluno">
               <div class="modal-body">
                   @csrf
                   @method('put')
@@ -193,10 +196,20 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button class="btn btn btn-danger" type="submit">Salvar</button>
               </div>
           </form>
+          <br>
+
+          <!-- Listagem de alunos da classe-->
+          <div class="container">
+              <p class="pe-1 ps-1 pb-3">Lista de alunos</p>
+              <ul class="list-group ps-1 pe-1 pb-3" id="listaAlunos">
+
+              </ul>
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -204,11 +217,7 @@
 
     <script type="text/javascript">
 
-        /*
-        var cursos  = JSON.parse(<?php echo json_encode($cursos,JSON_UNESCAPED_UNICODE); ?>;)
-        var modulos = JSON.parse(<?php echo json_encode($modulos,JSON_UNESCAPED_UNICODE); ?>;)
-        var alunos  = JSON.parse(<?php echo json_encode($alunos,JSON_UNESCAPED_UNICODE); ?>;)
-        */
+
 
 
         //Excluir Registro
@@ -221,7 +230,7 @@
             $('#modalExcluir').modal('show');
         });
 
-        //Editar registro
+        //Editar Turma Capa
         $( ".btn-editar" ).on( "click", function() {
             let form = document.getElementById('formEditar')
             let txtNome = document.getElementById('editarNome')
@@ -235,14 +244,27 @@
             $('#modalEditar').modal('show');
         });
 
-        //Editar registro
+        //Adicionar aluno a turma
         $( ".btn-adicionar-aluno" ).on( "click", function() {
-            let form = document.getElementById('formEditar')
-            let txtNome = document.getElementById('editarNome')
-            txtNome.value = $(this).data('nome')
+            // Busca o formulario de adicionar aluno e adicona a rota com o id da turma
+            let form = document.getElementById('formAddAluno')
             form.action = $(this).data('rota')
             $('#modalAdicionarAluno').modal('show');
-            console.log($(this).data('alunos'))
+
+            let alunos = $(this).data('alunos')
+
+            let listaAlunos = alunos.split(";")
+
+            listaAlunos.forEach((item, i) => {
+                $( "#listaAlunos" ).append( "<li class='list-group-item'>" + item + "</li>");
+            });
+
+
+
+
+
+
+
         });
 
         // Valida o campo nome
