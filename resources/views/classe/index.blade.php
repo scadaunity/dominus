@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-3 align-self-end">
-                <button class="btn btn-outline-primary" type="submit" id="btnNovo" disabled>Cadastrar Classe</button>
+                <button class="btn btn-outline-primary" type="submit" id="btnNovo" disabled>Cadastrar Turma</button>
             </div>
         </div>
     </form>
@@ -69,6 +69,7 @@
                     <a href="#" class="btn btn-info btn-sm btn-adicionar-aluno"
                         data-curso="{{$classe}}"
                         data-nome="{{$classe->nome}}"
+                        data-alunos="{{$classe->alunos}}"
                         data-rota="{{ route('classe.update',['classe'=>$classe]) }}">
                         Adicionar alunos
                     </a>
@@ -241,6 +242,7 @@
             txtNome.value = $(this).data('nome')
             form.action = $(this).data('rota')
             $('#modalAdicionarAluno').modal('show');
+            console.log($(this).data('alunos'))
         });
 
         // Valida o campo nome

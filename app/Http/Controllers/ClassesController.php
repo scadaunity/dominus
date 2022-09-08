@@ -6,6 +6,7 @@ use App\Models\Classe;
 use App\Models\Curso;
 use App\Models\Modulo;
 use App\Models\Aluno;
+use App\Models\Professor;
 use Illuminate\Http\Request;
 
 class ClassesController extends Controller
@@ -16,22 +17,18 @@ class ClassesController extends Controller
         $cursos = Curso::query()->orderBy('nome')->get();
         $modulos = Modulo::query()->orderBy('nome')->get();
         $alunos = Aluno::query()->orderBy('nome')->get();
-
-        $series = array(
-            'Selecione',
-            'Ensino fundamental I',
-            'Ensino fundamental II',
-            'Ensino médio'
-        );
+        $professores = Professor::query()->orderBy('nome')->get();
 
         return view('classe.index')
-            ->with('series', $series)
             ->with('classes', $classes)
             ->with('cursos', $cursos)
             ->with('modulos', $modulos)
-            ->with('alunos', $alunos);
+            ->with('alunos', $alunos)
+            ->with('professores', $professores);
     }
-
+    /*
+     Cria uma nova turma
+     */
     public function store(Request $request, Classe $classe)
     {
 
@@ -44,7 +41,7 @@ class ClassesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza uma turma existente
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

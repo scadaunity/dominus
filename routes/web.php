@@ -39,9 +39,6 @@ Route::resource('modulos',ModulosController::class)->names('modulo')->parameters
 Route::resource('classes',ClassesController::class)->names('classe')->parameters(['classes'=>'classe']);
 Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')->parameters(['disciplinas'=>'disciplina']);
 
-//Classe
-//Route::get('classes', [ClassesController::class, 'index']);
-//Route::post('classes/save', [ClassesController::class, 'store']);
 
 //Disciplina
 Route::get('disciplinas', [DisciplinaController::class, 'index']);
