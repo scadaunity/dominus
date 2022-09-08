@@ -172,28 +172,44 @@
 
     <!-- Modal adicionar aluno - Inicio -->
     <div class="modal fade" id="modalAdicionarAluno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Adicionar aluno</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form class="needs-validation" method="post" id="formAddAluno">
+              <input type="hidden" name="nome" value="" id="formAddAlunoNome">
+              <input type="hidden" name="curso_id" value="" id="formAddAlunoCurso">
+              <input type="hidden" name="modulo_id" value="" id="formAddAlunoModulo">
               <div class="modal-body">
                   @csrf
                   @method('put')
                   <div class="row g-3">
-                      <div class="col-sm-12">
-                          <label class="form-label">*Alunos</label>
-                          <select class="form-select" id="editarCurso_id" name="curso_id">
-                              <option value="0">Selecione</option>
+                      <div class="input-group">
+                          <select class="form-select" id="formAddAlunoSelect">
+                              <option selected value="0">Selecione...</option>
                               @foreach ($alunos as $aluno)
-                                  <option value="{{$aluno->id}}">{{$aluno->nome}}</option>
+                                  <option value="{{$aluno->id}} - {{$aluno->nome}}">{{$aluno->matricula}} - {{$aluno->nome}}</option>
                               @endforeach
                           </select>
+                          <button class="btn btn-outline-primary" type="button" id="btnInsertAluno" onclick="insertAluno()" disabled>Adiciona aluno</button>
                       </div>
 
+
                   </div>
+                  <hr>
+                  <!-- Listagem de alunos da classe-->
+
+                      <h6># Lista de alunos</h6>
+                    <ul class="mt-3 list-group list-group-horizontal">
+                        <li class="col-2 list-group-item list-group-item-secondary"><b>Matricula</b></li>
+                        <li class="col-10 list-group-item list-group-item-secondary"><b>Nome</b></li>
+                    </ul>
+                      <ul class="list-group ps-1 pe-1 pb-3" id="listaAlunos">
+
+                      </ul>
+
               </div>
               <div class="modal-footer">
                 <button class="btn btn btn-danger" type="submit">Salvar</button>
@@ -201,13 +217,7 @@
           </form>
           <br>
 
-          <!-- Listagem de alunos da classe-->
-          <div class="container">
-              <p class="pe-1 ps-1 pb-3">Lista de alunos</p>
-              <ul class="list-group ps-1 pe-1 pb-3" id="listaAlunos">
 
-              </ul>
-          </div>
 
 
         </div>
@@ -216,9 +226,6 @@
     <!-- Modal editar - Fim -->
 
     <script type="text/javascript">
-
-
-
 
         //Excluir Registro
         $( ".btn-excluir" ).on( "click", function() {
@@ -249,21 +256,27 @@
             // Busca o formulario de adicionar aluno e adicona a rota com o id da turma
             let form = document.getElementById('formAddAluno')
             form.action = $(this).data('rota')
-            $('#modalAdicionarAluno').modal('show');
 
-            let alunos = $(this).data('alunos')
+            $("#formAddAlunoNome").val($(this).data('nome'))
+            $("#formAddAlunoCurso").val($(this).data('curso'))
+            $("#formAddAlunoModulo").val($(this).data('modulo'))
 
-            let listaAlunos = alunos.split(";")
 
+
+            // lista os alunos da turma
+            let listaAlunos = $(this).data('alunos').split(";")
+            $( "#listaAlunos").empty()
             listaAlunos.forEach((item, i) => {
-                $( "#listaAlunos" ).append( "<li class='list-group-item'>" + item + "</li>");
+                $( "#listaAlunos" ).append(
+                    "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
+                    item +
+                    "<button class='btn btn-sm btn-outline-danger'>Remover</button>" +
+                    "</li>"
+                );
             });
 
-
-
-
-
-
+            // Abre a janela de edição
+            $('#modalAdicionarAluno').modal('show');
 
         });
 
@@ -305,6 +318,34 @@
                   $( "#btnNovo" ).val('').prop( "disabled", true );
               }
           });
+
+          // Valida o campo inserir aluno
+          $('#formAddAlunoSelect').change(function(e){
+              let value = $(this).val()
+              console.log(value)
+              if (value == 0) {
+                  $( "#btnInsertAluno" ).val('').prop( "disabled", true );
+              } else {
+                  $( "#btnInsertAluno" ).val('').prop( "disabled", false );
+              }
+          });
+
+          // insere aluno na coluna
+          function insertAluno(){
+
+              $( "#listaAlunos" ).append(
+                  "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
+                  $("#formAddAlunoSelect").val() +
+                  "<button class='btn btn-sm btn-outline-danger'>Remover</button>" +
+                  "</li>"
+              );
+              
+          }
+
+          // remove aluno na coluna
+          function removeAluno(){
+
+          }
 
     </script>
 
