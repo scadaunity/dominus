@@ -183,17 +183,30 @@
             })
             .keyup();
 
-            // Valida o campo carga horaria
+             //Valida o campo carga horaria
             $( "#cargaHoraria" )
               .keyup(function() {
-                if ($(this).val().length >= 1)
-                {
-                    $( "#btnNovo" ).prop( "disabled", false )
-                } else {
-                    $( "#btnNovo" ).prop( "disabled", true )
-                }
+                  if ($(this).val().length >= 1)
+                  {
+                      $(this).addClass('is-valid')
+                      $( "#btnNovo" ).prop( "disabled", false )
+                  } else {
+                      $(this).removeClass('is-valid')
+                      $( "#btnNovo" ).prop( "disabled", true )
+                  }
               })
               .keyup();
+
+              $('#cargaHoraria').on("change", function(){
+                  if ($(this).val().length >= 1)
+                  {
+                      $(this).addClass('is-valid')
+                      $( "#btnNovo" ).prop( "disabled", false )
+                  } else {
+                      $(this).removeClass('is-valid')
+                      $( "#btnNovo" ).prop( "disabled", true )
+                  }
+              })
 
 
 

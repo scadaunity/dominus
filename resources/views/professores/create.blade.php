@@ -3,34 +3,34 @@
         @csrf
         <div class="row g-3 ">
             <div class="col-sm-8">
-                <label class="form-label">Nome</label>
+                <label class="form-label">*Nome</label>
                 <input type="text" class="form-control form-control-sm" id="nome" name="nome" required="">
             </div>
 
             <div class="col-sm-4">
-                <label class="form-label">CPF</label>
+                <label class="form-label">*CPF</label>
                 <input type="text" class="form-control form-control-sm" id="cpf" name="cpf"
                     placeholder="000.000.000-00" required="">
             </div>
 
             <div class="col-sm-5">
-                <label class="form-label">Email</label>
+                <label class="form-label">*Email</label>
                 <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="voce@example.com" required="">
             </div>
 
             <div class="col-sm-3">
-                <label class="form-label">Celular</label>
+                <label class="form-label">*Celular</label>
                 <input type="text" class="form-control form-control-sm"
                     id="celular" name="celular" placeholder="(00) 00000-0000" required="">
             </div>
 
             <div class="col-sm-5">
-                <label class="form-label">Endereço</label>
+                <label class="form-label">*Endereço</label>
                 <input type="text" class="form-control form-control-sm" id="endereco" name="endereco" placeholder="Rua/AV" required="">
             </div>
 
             <div class="col-sm-1">
-                <label class="form-label">Numero</label>
+                <label class="form-label">*Numero</label>
                 <input type="text" class="form-control form-control-sm" id="numero" name="numero" required="">
             </div>
 
@@ -40,25 +40,25 @@
             </div>
 
             <div class="col-sm-4">
-                <label class="form-label">Bairro</label>
+                <label class="form-label">*Bairro</label>
                 <input type="text" class="form-control form-control-sm" id="bairro" name="bairro" required="">
             </div>
 
 
 
             <div class="col-sm-5">
-                <label class="form-label">Cidade</label>
+                <label class="form-label">*Cidade</label>
                 <input type="text" class="form-control form-control-sm" id="cidade" name="cidade" required="">
             </div>
 
             <div class="col-sm-2">
-                <label class="form-label">CEP</label>
+                <label class="form-label">*CEP</label>
                 <input type="text" class="form-control form-control-sm" id="cep" placeholder="00000-000"
                     name="cep" required="">
             </div>
 
             <div class="col-sm-1">
-                <label class="form-label">Estado</label>
+                <label class="form-label">*Estado</label>
                 <select class="form-select form-select-sm" id="estado" name="estado" required="" value="">
 
                     @foreach ($estados as $estado)
