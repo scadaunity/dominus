@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ModulosController;
+use App\Http\Controllers\TurmaController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +29,9 @@ Route::get('/', function () {
 
 //Login
 Route::get('login', [LoginController::class, 'index']);
-Route::get('home', [LoginController::class, 'home']);
+Route::get('home', [HomeController::class, 'index']);
 Route::post('autenticate', [LoginController::class, 'autenticate']);
-//Route::get('login', [AuthController::class, 'index']);
+//Route::get('/turmas','TurmaController@index');
 
 // Resources
 Route::resource('professores',ProfessoresController::class)->names('professor')->parameters(['professores'=>'professor']);
@@ -39,11 +41,4 @@ Route::resource('modulos',ModulosController::class)->names('modulo')->parameters
 Route::resource('classes',ClassesController::class)->names('classe')->parameters(['classes'=>'classe']);
 Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')->parameters(['disciplinas'=>'disciplina']);
 
-
-//Disciplina
-Route::get('disciplinas', [DisciplinaController::class, 'index']);
-Route::post('disciplinas/save', [DisciplinaController::class, 'store']);
-
-//Cursos
-//Route::get('cursos', [CursosController::class, 'index']);
-//Route::post('cursos/save', [CursosController::class, 'store']);
+Route::resource('turmas',TurmaController::class)->names('turma')->parameters(['turmas'=>'turma']);

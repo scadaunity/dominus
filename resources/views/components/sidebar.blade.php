@@ -40,7 +40,7 @@
                 </a>
             </li>
             <li>
-                <a href="/classes" class="navs">
+                <a href="/turmas" class="navs">
                     <img src="{{ asset('icons/classe.png') }}" style="width: 15%" />
                     Turma
                 </a>

@@ -10,6 +10,7 @@
     <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/mascaras.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dominus</title>
 </head>
 
