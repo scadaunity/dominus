@@ -47,14 +47,14 @@ class TurmaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Turma $turma)
     {
-        $classe->nome = $request->nome;
-        $classe->curso = $request->curso_id;
-        $classe->modulo = $request->modulo_id;
-        $classe->save();
+        $turma->nome = $request->nome;
+        $turma->curso = $request->curso_id;
+        $turma->modulo = $request->modulo_id;
+        $turma->save();
 
-        return redirect('classes');
+        return redirect('turmas');
     }
 
     /**
