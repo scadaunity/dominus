@@ -1,13 +1,14 @@
-<x-layout title="Alunos da turma">
-    <form class="needs-validation" action="{{ route('curso.store') }}" method="post">
+<x-layout title="{{$turma->nome}} - Alunos">
+    <form class="needs-validation" action="{{ route('turma.aluno.store') }}" method="post">
         @csrf
         <div class="row g-3">
+            <input type="hidden" name="turma_id" value="{{$turma->id}}">
             <div class="col-sm-5">
                 <label class="form-label">*Alunos</label>
-                <select class="form-select" id="curso_id" name="curso_id">
+                <select class="form-select" id="aluno_id" name="aluno_id">
                     <option value="0">Selecione...</option>
-                    @foreach ($todosAlunos as $aluno)
-                        <option value="{{$aluno->id}}">{{$aluno->nome}}</option>
+                    @foreach ($todosAlunos as $listaAluno)
+                        <option value="{{$listaAluno->id}}">{{$listaAluno->nome}}</option>
                     @endforeach
                 </select>
             </div>
@@ -34,15 +35,16 @@
                 @foreach ($todosAlunos as $listaAluno)
                     @if($listaAluno->id == $aluno->aluno_id)
                         <td>{{ $listaAluno->nome }}</td>
+                        <td class="text-end">
+                            <a href="#" class="btn btn-danger btn-sm btn-excluir" data-nome="{{$listaAluno->nome}}" data-rota="{{ route('turma.aluno.destroy',['turma'=>$turma,'aluno'=>$aluno->aluno_id]) }}">
+                                Excluir
+                            </a>
+                        </td>
                     @endif
 
                 @endforeach
 
-                <td class="text-end">
-                    <a href="#" class="btn btn-danger btn-sm btn-excluir">
-                        Excluir
-                    </a>
-                </td>
+
             </tr>
             @endforeach
         </tbody>
@@ -53,17 +55,17 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Excluir Curso</h5>
+            <h5 class="modal-title">Excluir aluno</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p class="text-center">Confirma a exclusão do curso?</p>
-            <h3 class="text-center"></h3>
+            <p class="text-center">Confirma a exclusão do aluno?</p>
+            <h3 class="text-center" id="excluirNome"></h3>
             <p class="text-muted text-center">Não será possivel recuperar o registro.</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <form id="formDeleteUser" class="" action="" method="post">
+            <form id="formDelete" class="" action="" method="post">
                 @csrf
                 @method('delete')
                 <button class="btn btn btn-danger" type="submit">Excluir</button>
@@ -73,53 +75,16 @@
       </div>
     </div>
 
-    <!-- Modal editar -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar Curso</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form class="needs-validation" action="" method="post" id="formEditar">
-              <div class="modal-body">
-                  @csrf
-                  @method('put')
-                  <div class="row g-3">
-                      <div class="col-sm-12">
-                          <label class="form-label">Nome do Curso</label>
-                          <input type="text" class="form-control" name="nome" id="editarNome"required>
-                      </div>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button class="btn btn btn-danger" type="submit">Salvar</button>
-              </div>
-          </form>
-        </div>
-      </div>
-    </div>
+
 
     <script type="text/javascript">
 
         //Excluir registro
         $( ".btn-excluir" ).on( "click", function() {
-            let modal = document.getElementById('modalExcluir')
-            let modalName = modal.querySelector('.modal-body h3')
-            let form = document.getElementById('formDeleteUser')
-            form.action = $(this).data('rota')
-            modalName.textContent = $(this).data('nome')
+            console.log($(this).data("rota"))
+            $('#formDelete').attr('action',$(this).data("rota"))
+            $('#excluirNome').html($(this).data('nome'))
             $('#modalExcluir').modal('show');
-        });
-
-        //Editar registro
-        $( ".btn-editar" ).on( "click", function() {
-            let form = document.getElementById('formEditar')
-            let txtNome = document.getElementById('editarNome')
-            txtNome.value = $(this).data('nome')
-            form.action = $(this).data('rota')
-            $('#modalEditar').modal('show');
         });
 
     </script>
