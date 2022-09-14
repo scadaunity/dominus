@@ -162,15 +162,10 @@ class TurmaController extends Controller
      */
     public function destroyAluno(Turma $turma, TurmaAluno $turmaAluno, $id)
     {
-
         $deleted = DB::table('turma_aluno')
             ->where('turma_id','=',$turma->id)
-            ->where('aluno_id','=',$id)
+            ->where('id','=',$id)
             ->delete();
-
-        
         return redirect()->route('turma.aluno.show', ['turma'=>$turma->id]);
-
-
     }
 }

@@ -23,6 +23,7 @@
     <table class="display table table-striped" style="width:100%">
         <thead>
             <tr>
+                <th width="70">Codigo</th>
                 <th>Nome</th>
                 <th class="text-end"></th>
             </tr>
@@ -30,12 +31,12 @@
         <tbody>
             @foreach ($alunos as $aluno)
             <tr>
-
+                <td>{{$aluno->aluno_id}}</td>
                 @foreach ($todosAlunos as $listaAluno)
                     @if($listaAluno->id == $aluno->aluno_id)
                         <td>{{ $listaAluno->nome }}</td>
                         <td class="text-end">
-                            <a href="#" class="btn btn-danger btn-sm btn-excluir" data-nome="{{$listaAluno->nome}}" data-rota="{{ route('turma.aluno.destroy',['turma'=>$turma,'aluno'=>$aluno->id]) }}">
+                            <a href="#" class="btn btn-danger btn-sm btn-excluir" data-nome="{{$listaAluno->nome}}" data-rota="{{ route('turma.aluno.destroy',['turma'=>$turma,'aluno'=>$aluno->aluno_id]) }}">
                                 Excluir
                             </a>
                         </td>
