@@ -9,4 +9,6 @@
     {{$turma->id}}
     <br>
     {{$turma->nome}}
+
+    {{$cursos}}
 </x-layout>

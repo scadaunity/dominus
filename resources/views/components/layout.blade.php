@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header class="navbar navbar-light sticky-top bg-light shadow">
+    <header class="navbar navbar-light  bg-light shadow">
         <div class="container-fluid">
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
                 <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">

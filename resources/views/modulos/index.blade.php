@@ -28,7 +28,7 @@
             <tr>
                 <th>Curso</th>
                 <th>Modulo</th>
-                <th>Ação</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -40,16 +40,17 @@
                     @endif
                 @endforeach
                 <td>{{ $modulo->nome }}</td>
-                <td>
+                <td class="text-end">
                     <a href="#" class="btn btn-secondary btn-sm btn-editar"
                         data-nome="{{$modulo->nome}}"
+                        data-curso="{{$modulo->curso_id}}"
                         data-rota="{{ route('modulo.update',['modulo'=>$modulo]) }}">
-                        Alterar
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                     <a href="#" class="btn btn-danger btn-sm btn-excluir"
                         data-nome="{{ $modulo->nome }}"
                         data-rota="{{ route('modulo.destroy',['modulo'=>$modulo]) }}">
-                        Excluir
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
@@ -113,8 +114,7 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button class="btn btn btn-danger" type="submit">Salvar</button>
+                <button class="btn btn btn-primary" type="submit">Salvar</button>
               </div>
           </form>
         </div>
@@ -136,10 +136,10 @@
 
         //Editar registro
         $( ".btn-editar" ).on( "click", function() {
-            let form = document.getElementById('formEditar')
-            let txtNome = document.getElementById('editarNome')
-            txtNome.value = $(this).data('nome')
-            form.action = $(this).data('rota')
+            $('#formEditar').attr('action',$(this).data("rota"))
+            $('#editarNome').val($(this).data('nome'))
+            $('#editarCurso_id').val($(this).data('curso'))
+            console.log($(this).data('curso'))
             $('#modalEditar').modal('show');
         });
 

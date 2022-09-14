@@ -21,9 +21,7 @@
                 <label class="form-label">*Modulo</label>
                 <select class="form-select" id="modulo_id" name="modulo_id" disabled>
                     <option value="0">Selecione...</option>
-                    @foreach ($modulos as $modulo)
-                        <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
-                    @endforeach
+
                 </select>
             </div>
 
@@ -34,47 +32,55 @@
     </form>
     <br>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+/* SCRIPTS - CADASTRO DE NOVA TURMA - INICIO */
+// Valida o campo nome
+$( "#nome" )
+  .keyup(function() {
+    if ($(this).val().length >= 5)
+    {
+        $(this).addClass('is-valid')
+        $( "#curso_id" ).prop( "disabled", false)
+    } else {
+        $(this).removeClass('is-valid')
+        $( "#curso_id" ).prop( "disabled", true ).removeClass('is-valid')
+    }
+  })
+  .keyup();
 
-        // Valida o campo nome
-        $( "#nome" )
-          .keyup(function() {
-             // verifica se possui mais de 5 caracteres
-            if ($(this).val().length >= 5)
-            {
-                $(this).addClass('is-valid')
-                $( "#curso_id" ).prop( "disabled", false)
-            } else {
-                $(this).removeClass('is-valid')
-                $( "#curso_id" ).prop( "disabled", true ).removeClass('is-valid')
-            }
-          })
-          .keyup();
+  // Valida o campo curso
+  $('#curso_id').change(function(e){
+      let value = $('#curso_id').val()
+      if (value > 0) {
+          $(this).addClass('is-valid')
+          updateSelectModulos(value)
+          $( "#modulo_id" ).prop( "disabled", false ).focus();
+      } else {
+          $(this).removeClass('is-valid')
+          $( "#modulo_id" ).val('').prop( "disabled", true ).removeClass('is-valid');
+      }
+  });
 
-          // Valida o campo curso
-          $('#curso_id').change(function(e){
-              let value = $('#curso_id').val()
-              if (value > 0) {
-                  $(this).addClass('is-valid')
-                  $( "#modulo_id" ).prop( "disabled", false ).focus();
-              } else {
-                  $(this).removeClass('is-valid')
-                  $( "#modulo_id" ).val('').prop( "disabled", true );
-              }
-          });
+  // Valida o campo modulo
+  $('#modulo_id').change(function(e){
+      let value = $('#curso_id').val()
+      if (value > 0) {
+          $(this).addClass('is-valid')
+          $( "#btnNovo" ).prop( "disabled", false ).focus();
+      } else {
+          $(this).removeClass('is-valid')
+          $( "#btnNovo" ).val('').prop( "disabled", true );
+      }
+  });
 
-          // Valida o campo modulo
-          $('#modulo_id').change(function(e){
-              let value = $('#curso_id').val()
-              if (value > 0) {
-                  $(this).addClass('is-valid')
-                  $( "#btnNovo" ).prop( "disabled", false ).focus();
-              } else {
-                  $(this).removeClass('is-valid')
-                  $( "#btnNovo" ).val('').prop( "disabled", true );
-              }
-          });   
-
-    </script>
+  // Valida o campo modulo
+  function updateSelectModulos(curso){
+      let url = "{{url('/getmodulo')}}/"+curso;
+      $.get( url, function( data ) {
+          $('#modulo_id').html(data);
+      });
+  }
+  /* SCRIPTS - CADASTRO DE NOVA TURMA - FIM */
+</script>
 
 </x-layout>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Turma;
 use App\Models\Curso;
 use App\Models\Modulo;
+use App\Models\Aluno;
+use App\Models\Professor;
 use Illuminate\Http\Request;
 
 class TurmaController extends Controller
@@ -19,10 +21,14 @@ class TurmaController extends Controller
         $turmas = Turma::query()->orderBy('id')->get();
         $cursos = Curso::query()->orderBy('nome')->get();
         $modulos = Modulo::query()->orderBy('nome')->get();
+        $alunos = Aluno::query()->orderBy('nome')->get();
+        $professores = Professor::query()->orderBy('nome')->get();
         return view('turmas.index',[
             'turmas' => $turmas,
             'cursos' => $cursos,
             'modulos' => $modulos,
+            'alunos' => $alunos,
+            'professores' => $professores
         ]);
     }
 
@@ -65,8 +71,10 @@ class TurmaController extends Controller
      */
     public function show(Turma $turma)
     {
+        $cursos = $turma->cursos()->get();
         return view('turmas.view',[
             'turma' => $turma,
+            'cursos' => $cursos
         ]);
     }
 
@@ -90,7 +98,12 @@ class TurmaController extends Controller
      */
     public function update(Request $request, Turma $turma)
     {
-        //
+        $turma->nome = $request->nome;
+        $turma->curso = $request->curso_id;
+        $turma->modulo = $request->modulo_id;
+        $turma->save();
+
+        return redirect('turmas');
     }
 
     /**
@@ -101,6 +114,7 @@ class TurmaController extends Controller
      */
     public function destroy(Turma $turma)
     {
-        //
+        $turma->delete();
+        return redirect('turmas');
     }
 }

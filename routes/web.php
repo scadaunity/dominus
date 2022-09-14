@@ -10,6 +10,8 @@ use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ModulosController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\HomeController;
+
+use App\Models\Modulo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +33,6 @@ Route::get('/', function () {
 Route::get('login', [LoginController::class, 'index']);
 Route::get('home', [HomeController::class, 'index']);
 Route::post('autenticate', [LoginController::class, 'autenticate']);
-//Route::get('/turmas','TurmaController@index');
 
 // Resources
 Route::resource('professores',ProfessoresController::class)->names('professor')->parameters(['professores'=>'professor']);
@@ -42,3 +43,15 @@ Route::resource('classes',ClassesController::class)->names('classe')->parameters
 Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')->parameters(['disciplinas'=>'disciplina']);
 
 Route::resource('turmas',TurmaController::class)->names('turma')->parameters(['turmas'=>'turma']);
+
+//Autocomplete
+Route::get('/getmodulo/{id}', function ($id) {
+    $result = DB::table('modulos')->where('curso_id', $id)->get();
+    echo '<option value="0">Selecione...</option>';
+    foreach ($result as $modulo) {
+        echo '<option value="'.$modulo->id .'">' .$modulo->nome.'</option>';
+    }
+
+
+
+})->name('get.modulo');

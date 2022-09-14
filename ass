@@ -1,0 +1,19 @@
+=> [34;4mIlluminate\Database\Eloquent\Collection[39;24m {#4865
+     [34mall[39m: [
+       [34;4mApp\Models\Curso[39;24m {#4856
+         [34mid[39m: [35m1[39m,
+         [34mcodigo[39m: [35m0[39m,
+         [34mnome[39m: "[32mBioquimica[39m",
+         [34mcreated_at[39m: "[32m2022-09-07 21:15:53[39m",
+         [34mupdated_at[39m: "[32m2022-09-07 21:15:53[39m",
+       },
+       [34;4mApp\Models\Curso[39;24m {#4855
+         [34mid[39m: [35m2[39m,
+         [34mcodigo[39m: [35m0[39m,
+         [34mnome[39m: "[32mEletricidade Basica[39m",
+         [34mcreated_at[39m: "[32m2022-09-08 13:36:35[39m",
+         [34mupdated_at[39m: "[32m2022-09-08 13:36:35[39m",
+       },
+     ],
+   }
+
