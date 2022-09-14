@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Turma;
+use App\Models\Curso;
+use App\Models\Modulo;
+use App\Models\Aluno;
+use App\Models\Professor;
+use App\Models\TurmaAluno;
+use App\Models\TurmaProfessor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class TurmaAluno extends Controller
+class TurmaProfessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +40,13 @@ class TurmaAluno extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+     public function store(Request $request, Turma $turma, TurmaProfessor $turmaProfessor)
+     {
+         $turmaProfessor->turma_id = $request->turma_id;
+         $turmaProfessor->professor_id = $request->professor_id;
+         $turmaProfessor->save();
+         return redirect()->route('turma.professor.show', ['turma'=>$request->turma_id]);
+     }
 
     /**
      * Display the specified resource.
@@ -77,8 +88,13 @@ class TurmaAluno extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+     public function destroy(Turma $turma, TurmaProfessor $turmaProfessor, $id)
+     {
+
+         $deleted = DB::table('turma_professor')
+             ->where('turma_id','=',$turma->id)
+             ->where('id','=',$id)
+             ->delete();
+         return redirect()->route('turma.professor.show', ['turma'=>$turma->id]);
+     }
 }

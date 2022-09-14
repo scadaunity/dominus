@@ -8,6 +8,7 @@ use App\Models\Modulo;
 use App\Models\Aluno;
 use App\Models\Professor;
 use App\Models\TurmaAluno;
+use App\Models\TurmaProfessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -160,10 +161,59 @@ class TurmaController extends Controller
      */
     public function destroyAluno(Turma $turma, TurmaAluno $turmaAluno, $id)
     {
+        
         $deleted = DB::table('turma_aluno')
             ->where('turma_id','=',$turma->id)
             ->where('id','=',$id)
             ->delete();
         return redirect()->route('turma.aluno.show', ['turma'=>$turma->id]);
+    }
+
+    /**
+     * Exibe os professores presentes na turma
+     *
+     * @param  \App\Models\Turma  $turma
+     * @return \Illuminate\Http\Response
+     */
+    public function Professores(Turma $turma)
+    {
+        $todosProfessores = Professor::query()->orderBy('nome')->get();
+        $professores = DB::table('turma_professor')->where('turma_id', $turma->id)->get();
+
+        return view('turmas.professores',[
+            'todosProfessores' => $todosProfessores,
+            'professores' => $professores,
+            'turma' => $turma
+        ]);
+    }
+
+    /**
+     * Armazena um aluno a turma.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeProfessor(Request $request,Turma $turma, TurmaProfessor $turmaProfessor)
+    {
+        $turmaProfessor->turma_id = $request->turma_id;
+        $turmaProfessor->professor_id = $request->professor_id;
+        $turmaProfessor->save();
+        return redirect()->route('turma.professor.show', ['turma'=>$request->turma_id]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Turma  $turma
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyProfessor(Turma $turma, TurmaProfessor $turmaProfessor, $id)
+    {
+
+        $deleted = DB::table('turma_professor')
+            ->where('turma_id','=',$turma->id)
+            ->where('id','=',$id)
+            ->delete();
+        return redirect()->route('turma.professor.show', ['turma'=>$turma->id]);
     }
 }

@@ -65,7 +65,7 @@
 
                 <td class="text-end">
                     <div class="">
-                        <a href="{{ route('turma.aluno.show',['turma'=>$turma]) }}" class="btn btn-primary btn-sm btn-adicionar-aluno">professores</a>
+                        <a href="{{ route('turma.professor.show',['turma'=>$turma]) }}" class="btn btn-primary btn-sm btn-adicionar-aluno">professores</a>
                         <a href="{{ route('turma.aluno.show',['turma'=>$turma]) }}" class="btn btn-info btn-sm btn-adicionar-aluno">Alunos</a>
                         <a href="#" class="btn btn-outline-secondary btn-sm btn-editar" data-rota="{{ route('turma.update',['turma'=>$turma]) }}" data-nome="{{ $turma->nome }}" data-curso="{{ $turma->curso }}" data-modulo="{{ $turma->modulo }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         <a href="#" class="btn btn-outline-danger btn-sm btn-excluir" data-nome="{{ $turma->nome }}" data-rota="{{ route('turma.destroy',['turma'=>$turma]) }}">

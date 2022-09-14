@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ModulosController;
 use App\Http\Controllers\TurmaController;
+use App\Http\Controllers\TurmaProfessorController;
 use App\Http\Controllers\HomeController;
 
 use App\Models\Modulo;
@@ -51,8 +52,8 @@ Route::resource('turmas',TurmaController::class)->names('turma')->parameters(['t
     Route::post('/turmas/aluno',[TurmaController::class,'storeAluno'])->name('turma.aluno.store');
     // professores
     Route::get('/turmas/{turma}/professor',[TurmaController::class,'professores'])->name('turma.professor.show');
-    Route::delete('/turmas/{turma}/{professor}',[TurmaController::class,'destroyProfessor'])->name('turma.professor.destroy');
-    Route::post('/turmas/professor',[TurmaController::class,'storeProfessor'])->name('turma.professor.store');
+    Route::delete('/turmas/{turma}/{professor}/professor',[TurmaProfessorController::class,'destroy'])->name('turma.professor.destroy');
+    Route::post('/turmas/professor',[TurmaProfessorController::class,'store'])->name('turma.professor.store');
 
 
 
