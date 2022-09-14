@@ -45,9 +45,15 @@ Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')-
 
 // TURMAS
 Route::resource('turmas',TurmaController::class)->names('turma')->parameters(['turmas'=>'turma']);
-Route::get('/turmas/{turma}/alunos',[TurmaController::class,'alunos'])->name('turma.aluno.show');
-Route::delete('/turmas/{turma}/{aluno}',[TurmaController::class,'destroyAluno'])->name('turma.aluno.destroy');
-Route::post('/turmas/aluno',[TurmaController::class,'storeAluno'])->name('turma.aluno.store');
+    // Alunos
+    Route::get('/turmas/{turma}/alunos',[TurmaController::class,'alunos'])->name('turma.aluno.show');
+    Route::delete('/turmas/{turma}/{aluno}',[TurmaController::class,'destroyAluno'])->name('turma.aluno.destroy');
+    Route::post('/turmas/aluno',[TurmaController::class,'storeAluno'])->name('turma.aluno.store');
+    // professores
+    Route::get('/turmas/{turma}/professor',[TurmaController::class,'professores'])->name('turma.professor.show');
+    Route::delete('/turmas/{turma}/{professor}',[TurmaController::class,'destroyProfessor'])->name('turma.professor.destroy');
+    Route::post('/turmas/professor',[TurmaController::class,'storeProfessor'])->name('turma.professor.store');
+
 
 
 //Autocomplete

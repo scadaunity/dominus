@@ -149,9 +149,7 @@ class TurmaController extends Controller
         $turmaAluno->turma_id = $request->turma_id;
         $turmaAluno->aluno_id = $request->aluno_id;
         $turmaAluno->save();
-
         return redirect()->route('turma.aluno.show', ['turma'=>$request->turma_id]);
-
     }
 
     /**
