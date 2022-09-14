@@ -9,4 +9,8 @@ class Aluno extends Model
 {
     use HasFactory;
     protected $table = "alunos";
+
+    public function turmas(){
+        return $this->belongsToMany(Turma::class);
+    }
 }

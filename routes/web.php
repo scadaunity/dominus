@@ -42,7 +42,11 @@ Route::resource('modulos',ModulosController::class)->names('modulo')->parameters
 Route::resource('classes',ClassesController::class)->names('classe')->parameters(['classes'=>'classe']);
 Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')->parameters(['disciplinas'=>'disciplina']);
 
+
+// TURMAS
 Route::resource('turmas',TurmaController::class)->names('turma')->parameters(['turmas'=>'turma']);
+Route::get('/turmas/{turma}/alunos',[TurmaController::class,'alunos'])->name('turma.aluno.show');
+
 
 //Autocomplete
 Route::get('/getmodulo/{id}', function ($id) {
@@ -51,7 +55,4 @@ Route::get('/getmodulo/{id}', function ($id) {
     foreach ($result as $modulo) {
         echo '<option value="'.$modulo->id .'">' .$modulo->nome.'</option>';
     }
-
-
-
 })->name('get.modulo');

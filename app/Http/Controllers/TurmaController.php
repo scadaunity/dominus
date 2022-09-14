@@ -8,6 +8,7 @@ use App\Models\Modulo;
 use App\Models\Aluno;
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TurmaController extends Controller
 {
@@ -116,5 +117,22 @@ class TurmaController extends Controller
     {
         $turma->delete();
         return redirect('turmas');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Turma  $turma
+     * @return \Illuminate\Http\Response
+     */
+    public function Alunos(Turma $turma)
+    {
+        $todosAlunos = Aluno::query()->orderBy('nome')->get();
+        $alunos = DB::table('turma_aluno')->where('turma_id', $turma->id)->get();
+        
+        return view('turmas.alunos',[
+            'todosAlunos' => $todosAlunos,
+            'alunos' => $alunos
+        ]);
     }
 }
