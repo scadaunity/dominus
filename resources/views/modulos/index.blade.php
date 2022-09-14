@@ -41,13 +41,13 @@
                 @endforeach
                 <td>{{ $modulo->nome }}</td>
                 <td class="text-end">
-                    <a href="#" class="btn btn-secondary btn-sm btn-editar"
+                    <a href="#" class="btn btn-outline-secondary btn-sm btn-editar"
                         data-nome="{{$modulo->nome}}"
                         data-curso="{{$modulo->curso_id}}"
                         data-rota="{{ route('modulo.update',['modulo'=>$modulo]) }}">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="btn btn-danger btn-sm btn-excluir"
+                    <a href="#" class="btn btn-outline-danger btn-sm btn-excluir"
                         data-nome="{{ $modulo->nome }}"
                         data-rota="{{ route('modulo.destroy',['modulo'=>$modulo]) }}">
                         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
                           </select>
                       </div>
                       <div class="col-sm-12">
-                          <label class="form-label">Nome do Curso</label>
+                          <label class="form-label">*Nome do modulo</label>
                           <input type="text" class="form-control" name="nome" id="editarNome"required>
                       </div>
 

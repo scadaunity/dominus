@@ -19,7 +19,7 @@
             <tr>
                 <th>Codigo</th>
                 <th>Curso</th>
-                <th>Ação</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -27,16 +27,16 @@
             <tr>
                 <td>{{ $curso->id }}</td>
                 <td>{{ $curso->nome }}</td>
-                <td>
-                    <a href="#" class="btn btn-success btn-sm btn-editar"
+                <td class="text-end">
+                    <a href="#" class="btn btn-outline-secondary btn-sm btn-editar"
                         data-nome="{{$curso->nome}}"
                         data-rota="{{ route('curso.update',['curso'=>$curso]) }}">
-                        Alterar
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="btn btn-danger btn-sm btn-excluir"
+                    <a href="#" class="btn btn-outline-danger btn-sm btn-excluir"
                         data-nome="{{ $curso->nome }}"
                         data-rota="{{ route('curso.destroy',['curso'=>$curso]) }}">
-                        Excluir
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
