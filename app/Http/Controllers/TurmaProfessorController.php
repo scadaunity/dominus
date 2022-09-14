@@ -44,6 +44,9 @@ class TurmaProfessorController extends Controller
      {
          $turmaProfessor->turma_id = $request->turma_id;
          $turmaProfessor->professor_id = $request->professor_id;
+         $turmaProfessor->disciplina = $request->disciplina;
+         $turmaProfessor->dia_semana = $request->dia_semana;
+         $turmaProfessor->horario = $request->horario;
          $turmaProfessor->save();
          return redirect()->route('turma.professor.show', ['turma'=>$request->turma_id]);
      }

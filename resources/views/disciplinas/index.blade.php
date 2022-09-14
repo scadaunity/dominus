@@ -1,5 +1,5 @@
 <x-layout title="Disciplinas">
-    <form class="needs-validation" action="disciplinas/save" method="post">
+    <form class="needs-validation" action="{{ route('disciplina.store') }}" method="post">
         @csrf
         <div class="row g-3">
 
@@ -39,7 +39,7 @@
                 <th>Nome</th>
                 <th>Sigla</th>
                 <th>Carga Horaria</th>
-                <th>Ação</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -48,18 +48,18 @@
                 <td>{{ $disciplina->nome }}</td>
                 <td>{{ $disciplina->sigla }}</td>
                 <td>{{ $disciplina->carga_horaria }}</td>
-                <td>
-                    <a href="#" class="btn btn-secondary btn-sm btn-editar"
+                <td class="text-end">
+                    <a href="#" class="btn btn-outline-secondary btn-sm btn-editar"
                         data-nome="{{$disciplina->nome}}"
                         data-sigla="{{$disciplina->sigla}}"
                         data-carga="{{$disciplina->carga_horaria}}"
                         data-rota="{{ route('disciplina.update',['disciplina'=>$disciplina]) }}">
-                        Alterar
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="btn btn-danger btn-sm btn-excluir"
+                    <a href="#" class="btn btn-outline-danger btn-sm btn-excluir"
                         data-nome="{{ $disciplina->nome }}"
                         data-rota="{{ route('disciplina.destroy',['disciplina'=>$disciplina]) }}">
-                        Excluir
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>

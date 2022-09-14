@@ -23,14 +23,14 @@
                     <td></td>
                     <td>{{ $aluno->email }}</td>
                     <td>
-                        <a href="{{ url('alunos\/') .$aluno->id .'/editar'}}" class="btn btn-success btn-sm">Alterar</a>
-                        <a href="#" class="btn btn-danger btn-sm btn-excluir"
+                        <a href="{{ url('alunos\/') .$aluno->id .'/editar'}}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-outline-danger btn-sm btn-excluir"
                             data-professor = {{$aluno}}
                             data-route = "{{ route('aluno.destroy',['aluno'=>$aluno]) }}"
                             data-id="{{ $aluno->id }}"
                             data-nome="{{ $aluno->nome }}"
                             data-rota="{{ route('aluno.destroy',['aluno'=>$aluno]) }}">
-                            Excluir
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>

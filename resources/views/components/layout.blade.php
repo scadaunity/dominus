@@ -17,7 +17,7 @@
 <body>
     <header class="navbar navbar-light  bg-light shadow">
         <div class="container-fluid">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/home">
                 <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

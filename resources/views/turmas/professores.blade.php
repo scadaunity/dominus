@@ -1,9 +1,9 @@
 <x-layout title="{{$turma->nome}} - Professores">
     <form class="needs-validation" action="{{ route('turma.professor.store') }}" method="post">
         @csrf
-        <div class="row g-3">
+        <div class="row g-4">
             <input type="hidden" name="turma_id" value="{{$turma->id}}">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <label class="form-label">*Professores</label>
                 <select class="form-select" id="aluno_id" name="professor_id">
                     <option value="0">Selecione...</option>
@@ -12,9 +12,38 @@
                     @endforeach
                 </select>
             </div>
+            <div class="col-sm-3">
+                <label class="form-label">*Disciplina</label>
+                <select class="form-select" id="disciplina" name="disciplina">
+                    <option value="0">Selecione...</option>
+                    @foreach ($disciplinas as $disciplina)
+                        <option value="{{$disciplina->nome}}">{{$disciplina->nome}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-sm-2">
+                <label class="form-label">*Dia da semana</label>
+                <select class="form-select" id="dia_semana" name="dia_semana">
+                    <option value="0">Selecione...</option>
+                    <option value="Segunda-Feira">Segunda-Feira</option>
+                    <option value="Terça-Feira">Terça-Feira</option>
+                    <option value="Quarta-Feira">Quarta-Feira</option>
+                    <option value="Quinta-Feira">Quinta-Feira</option>
+                    <option value="Sexta-Feira">Sexta-Feira</option>
+                    <option value="Sábado">Sábado</option>
+                    <option value="Domingo">Domingo</option>
+                </select>
+            </div>
+
+            <div class="col-sm-3">
+                <label class="form-label">*Horario (aula)</label>
+                <input type="text" class="form-control" name="horario" id="horario">
+                <small>Exemplo: 07:00 - 8:00 (primeira aula)</small>
+            </div>
 
             <div class="col-3 align-self-end">
-                <button class="btn btn-outline-primary btn-store" type="submit">Adicionar professor</button>
+                <button class="btn btn-outline-info btn-store" type="submit">Incluir</button>
             </div>
         </div>
     </form>
@@ -23,21 +52,25 @@
     <table class="display table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th width="70">Codigo</th>
-                <th>Nome</th>
+                <th>Professor</th>
+                <th>Disciplina</th>
+                <th>Dia da semana</th>
+                <th>Horario(aula)</th>
                 <th class="text-end"></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($professores as $professor)
             <tr>
-                <td>{{$professor->professor_id}}</td>
                 @foreach ($todosProfessores as $listaProfessor)
                     @if($listaProfessor->id == $professor->professor_id)
                         <td>{{ $listaProfessor->nome }}</td>
+                        <td>{{$professor->disciplina}}</td>
+                        <td>{{$professor->dia_semana}}</td>
+                        <td>{{$professor->horario}}</td>
                         <td class="text-end">
                             <a href="#" class="btn btn-danger btn-sm btn-excluir" data-nome="{{$listaProfessor->nome}}" data-rota="{{ route('turma.professor.destroy',['turma'=>$turma,'professor'=>$professor->id]) }}">
-                                Excluir
+                                <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>
                     @endif

@@ -6,6 +6,7 @@ use App\Models\Turma;
 use App\Models\Curso;
 use App\Models\Modulo;
 use App\Models\Aluno;
+use App\Models\Disciplina;
 use App\Models\Professor;
 use App\Models\TurmaAluno;
 use App\Models\TurmaProfessor;
@@ -161,7 +162,7 @@ class TurmaController extends Controller
      */
     public function destroyAluno(Turma $turma, TurmaAluno $turmaAluno, $id)
     {
-        
+
         $deleted = DB::table('turma_aluno')
             ->where('turma_id','=',$turma->id)
             ->where('id','=',$id)
@@ -179,11 +180,13 @@ class TurmaController extends Controller
     {
         $todosProfessores = Professor::query()->orderBy('nome')->get();
         $professores = DB::table('turma_professor')->where('turma_id', $turma->id)->get();
+        $disciplinas = Disciplina::query()->orderBy('id')->get();
 
         return view('turmas.professores',[
             'todosProfessores' => $todosProfessores,
             'professores' => $professores,
-            'turma' => $turma
+            'turma' => $turma,
+            'disciplinas' => $disciplinas
         ]);
     }
 
