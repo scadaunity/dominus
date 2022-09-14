@@ -14,12 +14,7 @@ class AddColunasAlunosProfessoresNaClassesTable extends Migration
     public function up()
     {
         Schema::table('classes', function (Blueprint $table) {
-            $table->longText('alunos')
-                ->after('modulo')
-                ->nullable();
-            $table->longText('professores')
-                ->after('alunos')
-                ->nullable();
+            $table->id();
         });
     }
 
