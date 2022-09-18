@@ -1,4 +1,5 @@
-<x-layout title="Disciplinas">
+<x-layout title="Disciplinas {{ $disciplinas->count() }}">
+
     <form class="needs-validation" action="{{ route('disciplina.store') }}" method="post">
         @csrf
         <div class="row g-3">
@@ -81,7 +82,6 @@
             <p class="text-muted text-center">Não será possivel recuperar o registro.</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <form id="formDeleteUser" class="" action="" method="post">
                 @csrf
                 @method('delete')
@@ -115,15 +115,14 @@
                           <input type="text" class="form-control" name="sigla" id="editarSigla"required>
                       </div>
                       <div class="col-sm-12">
-                          <label class="form-label">Caraga Horaria</label>
-                          <input type="text" class="form-control" name="carga_horaria" id="editarCargaHoraria"required>
+                          <label class="form-label">Carga Horaria</label>
+                          <input type="number" class="form-control" name="carga_horaria" id="editarCargaHoraria"required>
                       </div>
 
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button class="btn btn btn-danger" type="submit">Salvar</button>
+                <button class="btn btn btn-primary" type="submit">Salvar</button>
               </div>
           </form>
         </div>
