@@ -59,7 +59,7 @@
                 <th>Professor</th>
                 <th>Disciplina</th>
                 <th>Dia da semana</th>
-                <th>Horario(aula)</th>
+                <th>Aula(Horario)</th>
                 <th class="text-end"></th>
             </tr>
         </thead>
