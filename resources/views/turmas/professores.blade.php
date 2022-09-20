@@ -37,13 +37,17 @@
             </div>
 
             <div class="col-sm-3">
-                <label class="form-label">*Horario (aula)</label>
-                <input type="text" class="form-control" name="horario" id="horario">
-                <small>Exemplo: 07:00 - 8:00 (primeira aula)</small>
+                <label class="form-label">*Aula (horario)</label>
+                <select class="form-select" id="horario" name="horario">
+                    <option value="0">Selecione...</option>
+                    @foreach ($horarios as $horario)
+                        <option value="{{$horario->aula}} - ( {{$horario->hora_inicio}} - {{$horario->hora_fim}} )">{{$horario->aula}} - ( {{$horario->hora_inicio}} - {{$horario->hora_fim}} )</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-3 align-self-end">
-                <button class="btn btn-outline-info btn-store" type="submit">Incluir</button>
+                <button class="btn btn-primary btn-store" type="submit">Incluir professor</button>
             </div>
         </div>
     </form>

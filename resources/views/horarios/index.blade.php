@@ -1,33 +1,29 @@
-<x-layout title="Disciplinas">
+<x-layout title="Horarios">
 
-    <form class="needs-validation" action="{{ route('disciplina.store') }}" method="post">
+    <form class="needs-validation" action="{{ route('horario.store') }}" method="post">
         @csrf
         <div class="row g-3">
 
             <div class="col-sm-5">
-                <label class="form-label">*Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
+                <label class="form-label">*Aula</label>
+                <input type="text" class="form-control" id="aula" name="aula" required>
                 <div class="invalid-feedback">
                   O nome deve conter 5 caracteres ou mais.
                 </div>
             </div>
 
             <div class="col-sm-2">
-                <label class="form-label">*Sigla</label>
-                <input type="text" class="form-control" id="sigla" name="sigla" required disabled>
+                <label class="form-label">*Hora inicio</label>
+                <input type="time" class="form-control" id="horaInicio" name="horaInicio" required>
             </div>
 
             <div class="col-sm-2">
-                <label class="form-label">*Carga Horaria</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" id="cargaHoraria" name="carga_horaria" required disabled>
-                  <span class="input-group-text" id="basic-addon2">Horas</span>
-                </div>
-
+                <label class="form-label">*Hora Fim</label>
+                <input type="time" class="form-control" id="horaFim" name="horaFim" required>
             </div>
 
             <div class="col-3 align-self-end">
-                <button class="btn btn-outline-primary" type="submit" id="btnNovo" disabled>Cadastrar Disciplina</button>
+                <button class="btn btn-outline-primary" type="submit" id="btnNovo">Cadastrar horario</button>
             </div>
         </div>
     </form>
@@ -37,29 +33,29 @@
     <table class="display table" style="width:100%" id="tableModulos">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Sigla</th>
-                <th>Carga Horaria</th>
+                <th>Aula</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fim</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($disciplinas as $disciplina)
+            @foreach ($horarios as $horario)
             <tr>
-                <td>{{ $disciplina->nome }}</td>
-                <td>{{ $disciplina->sigla }}</td>
-                <td>{{ $disciplina->carga_horaria }}</td>
+                <td>{{ $horario->aula }}</td>
+                <td>{{ $horario->hora_inicio }}</td>
+                <td>{{ $horario->hora_fim }}</td>
                 <td class="text-end">
                     <a href="#" class="btn btn-outline-secondary btn-sm btn-editar"
-                        data-nome="{{$disciplina->nome}}"
-                        data-sigla="{{$disciplina->sigla}}"
-                        data-carga="{{$disciplina->carga_horaria}}"
-                        data-rota="{{ route('disciplina.update',['disciplina'=>$disciplina]) }}">
+                        data-aula="{{$horario->aula}}"
+                        data-horaInicio="{{$horario->hora_inicio}}"
+                        data-horaFim="{{$horario->hora_fim}}"
+                        data-rota="{{ route('horario.update',['horario'=>$horario]) }}">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                     <a href="#" class="btn btn-outline-danger btn-sm btn-excluir"
-                        data-nome="{{ $disciplina->nome }}"
-                        data-rota="{{ route('disciplina.destroy',['disciplina'=>$disciplina]) }}">
+                        data-nome="{{ $horario->aula }}"
+                        data-rota="{{ route('horario.destroy',['horario'=>$horario]) }}">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </td>
@@ -73,12 +69,12 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Excluir disciplina</h5>
+            <h5 class="modal-title">Excluir horario</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p class="text-center">Confirma a exclusão da disciplina?</p>
-            <h3 class="text-center"></h3>
+            <p class="text-center">Confirma a exclusão do horario?</p>
+            <h3 class="text-center" id="excluirNome"></h3>
             <p class="text-muted text-center">Não será possivel recuperar o registro.</p>
           </div>
           <div class="modal-footer">
@@ -98,7 +94,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Editar Disciplina</h5>
+            <h5 class="modal-title">Editar horario</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form class="needs-validation" action="" method="post" id="formEditar">
@@ -107,16 +103,16 @@
                   @method('put')
                   <div class="row g-3">
                       <div class="col-sm-12">
-                          <label class="form-label">Nome</label>
-                          <input type="text" class="form-control" name="nome" id="editarNome"required>
+                          <label class="form-label">Aula</label>
+                          <input type="text" class="form-control" name="aula" id="editarAula"required>
                       </div>
                       <div class="col-sm-12">
-                          <label class="form-label">Sigla</label>
-                          <input type="text" class="form-control" name="sigla" id="editarSigla"required>
+                          <label class="form-label">Hora inicio</label>
+                          <input type="time" class="form-control" name="horaInicio" id="editarHoraInicio"required>
                       </div>
                       <div class="col-sm-12">
-                          <label class="form-label">Carga Horaria</label>
-                          <input type="number" class="form-control" name="carga_horaria" id="editarCargaHoraria"required>
+                          <label class="form-label">Hora fim</label>
+                          <input type="time" class="form-control" name="horaFim" id="editarHoraFim"required>
                       </div>
 
                   </div>
@@ -138,19 +134,20 @@
             let modalName = modal.querySelector('.modal-body h3')
             let form = document.getElementById('formDeleteUser')
             form.action = $(this).data('rota')
+            $('#formDelete').attr('action',$(this).data("rota"))
+            $('#excluirNome').val($(this).data('nome'))
             modalName.textContent = $(this).data('nome')
             $('#modalExcluir').modal('show');
         });
 
         //Editar registro
         $( ".btn-editar" ).on( "click", function() {
-            let form = document.getElementById('formEditar')
+            $('#editarAula').val($(this).data('aula'))
+            $('#editarHoraInicio').val($(this).data('horainicio'))
+            $('#editarHoraFim').val($(this).data('horafim'))
 
-            $('#editarNome').val($(this).data('nome'))
-            $('#editarSigla').val($(this).data('sigla'))
-            $('#editarCargaHoraria').val($(this).data('carga'))
-
-            form.action = $(this).data('rota')
+            console.log($(this).data())
+            $('#formEditar').attr('action',$(this).data("rota"))
             $('#modalEditar').modal('show');
         });
 

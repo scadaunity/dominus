@@ -10,6 +10,7 @@ use App\Models\Disciplina;
 use App\Models\Professor;
 use App\Models\TurmaAluno;
 use App\Models\TurmaProfessor;
+use App\Models\Horario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -181,12 +182,14 @@ class TurmaController extends Controller
         $todosProfessores = Professor::query()->orderBy('nome')->get();
         $professores = DB::table('turma_professor')->where('turma_id', $turma->id)->get();
         $disciplinas = Disciplina::query()->orderBy('id')->get();
+        $horarios = Horario::query()->orderBy('aula')->get();
 
         return view('turmas.professores',[
             'todosProfessores' => $todosProfessores,
             'professores' => $professores,
             'turma' => $turma,
-            'disciplinas' => $disciplinas
+            'disciplinas' => $disciplinas,
+            'horarios' => $horarios
         ]);
     }
 

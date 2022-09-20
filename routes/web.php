@@ -11,6 +11,7 @@ use App\Http\Controllers\ModulosController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaProfessorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HorarioController;
 
 use App\Models\Modulo;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::resource('cursos',CursosController::class)->names('curso')->parameters(['
 Route::resource('modulos',ModulosController::class)->names('modulo')->parameters(['modulos'=>'modulo']);
 Route::resource('classes',ClassesController::class)->names('classe')->parameters(['classes'=>'classe']);
 Route::resource('disciplinas',DisciplinaController::class)->names('disciplina')->parameters(['disciplinas'=>'disciplina']);
+Route::resource('horarios',HorarioController::class)->names('horario')->parameters(['horarios'=>'horario']);
 
 
 // TURMAS
