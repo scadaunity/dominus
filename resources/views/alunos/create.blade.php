@@ -9,41 +9,40 @@
             </div>
 
             <div class="col-sm-4">
-                <label class="form-label">*Matricula</label>
-                <input type="text" class="form-control form-control-sm" id="matricula" name="matricula" required="">
+                <label class="form-label">Matricula</label>
+                <input type="text" class="form-control form-control-sm" id="matricula" name="matricula" >
             </div>
 
             <div class="col-6">
-                <label class="form-label">*Email</label>
-                <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="voce@example.com" required="">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="voce@example.com" >
             </div>
 
 
 
             <div class="col-sm-2">
-                <label class="form-label">*Data de Nascimento</label>
-                <input type="text" class="form-control form-control-sm" id="nascimento" name="dataNascimento" placeholder="DD/MM/AAAA"
-                    required="">
+                <label class="form-label">Data de Nascimento</label>
+                <input type="text" class="form-control form-control-sm" id="nascimento" name="dataNascimento" placeholder="DD/MM/AAAA">
             </div>
 
             <div class="col-sm-4">
-                <label class="form-label">*Sexo</label>
+                <label class="form-label">Sexo</label>
                 <div class="container mt-1">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexo" id="mas" value="mas" required="">
+                        <input class="form-check-input" type="radio" name="sexo" id="mas" value="mas" >
                         <label class="form-check-label">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexo" id="fem" value="fem" required="">
+                        <input class="form-check-input" type="radio" name="sexo" id="fem" value="fem" >
                         <label class="form-check-label">Feminino</label>
                     </div>
                 </div>
             </div>
 
             <div class="col-3">
-                <label class="form-label">*Celular</label>
+                <label class="form-label">Celular</label>
                 <input type="text" class="form-control form-control-sm" id="telefone" name="telefone"
-                    placeholder="(00) 00000-0000" required="">
+                    placeholder="(00) 00000-0000" >
             </div>
 
             <div class="col-3">
@@ -93,13 +92,13 @@
 
             <div class="col-sm-5">
                 <label class="form-label">Cidade</label>
-                <input type="text" class="form-control form-control-sm" id="cidade" name="cidade" required="">
+                <input type="text" class="form-control form-control-sm" id="cidade" name="cidade" >
             </div>
 
             <div class="col-sm-2">
                 <label class="form-label">CEP</label>
                 <input type="text" class="form-control form-control-sm" id="cep" placeholder="00000-000"
-                    name="cep" required="">
+                    name="cep" >
             </div>
 
             <div class="col-sm-1">

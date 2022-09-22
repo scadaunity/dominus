@@ -15,35 +15,53 @@
 </head>
 
 <body>
-    <header class="navbar navbar-light  bg-light shadow">
-        <div class="container-fluid">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/home">
-                <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow">
+      <div class="container-fluid">
+          <ul class="navbar-nav d-md-none d-sm-block">
+              <li class="nav-item">
+                  <a class="nav-link"  href="history.go(-1)">Voltar</a>
+              </li>
+          </ul>
+
+          <!-- Logo desktop -->
+          <a class="navbar-brand d-none d-sm-block" href="/home">
+              <img src="{{ asset('icons/logo.png') }}" alt="Home" class="rounded">
+          </a>
+          <!-- Logo mobile -->
+          <a class="navbar-brand d-md-none d-sm-block" href="/home">
+              <img src="{{ asset('favicon.png') }}" alt="Home" class="rounded" width="80" height="80">
+          </a>
+          <!-- Hamburguer menu - mobile -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Cadastros
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Professor</a></li>
-                    <li><a class="dropdown-item" href="#">Aluno</a></li>
-                    <li><a class="dropdown-item" href="#">Turma</a></li>
-                    <li><a class="dropdown-item" href="#">Disciplina</a></li>
-                    <li><a class="dropdown-item" href="#">Cursos</a></li>
-                    <li><a class="dropdown-item" href="#">Modulos</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/') }}">Sair</a>
-                </li>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-none d-sm-block">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cadastro
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/professores">Professor</a></li>
+                  <li><a class="dropdown-item" href="/alunos">Aluno</a></li>
+                  <li><a class="dropdown-item" href="/turmas">Turma</a></li>
+                  <li><a class="dropdown-item" href="/disciplinas">Disciplina</a></li>
+                  <li><a class="dropdown-item" href="/cursos">Cursos</a></li>
+                  <li><a class="dropdown-item" href="/modulos">Modulos</a></li>
               </ul>
-            </div>
-    </header>
+            </li>
+          </ul>
+          <div class="container-fluid text-end pe-0">
+              <a class="btn btn-outline-success" href="{{ url('/') }}">Sair</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+
+
 
     <div class="container-fluid">
         <div class="row">
