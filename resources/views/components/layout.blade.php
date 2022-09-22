@@ -19,7 +19,7 @@
       <div class="container-fluid">
           <ul class="navbar-nav d-md-none d-sm-block">
               <li class="nav-item">
-                  <a class="nav-link"  href="history.go(-1)">Voltar</a>
+                  <a class="nav-link"  href="javascript:void(0)" onClick="history.go(-1)">Voltar</a>
               </li>
           </ul>
 
